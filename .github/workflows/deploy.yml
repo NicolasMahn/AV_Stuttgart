@@ -29,7 +29,7 @@ jobs:
         context: .
         file: Dockerfile
         push: true
-        tags: yourusername/yourrepository:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/av_stuttgart:latest
 
     # Optional: Run a simple test or command
     - name: Simple Test
