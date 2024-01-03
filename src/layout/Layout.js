@@ -1,7 +1,7 @@
 import React from 'react';
 import './Layout.css'; 
-import instagram from './assets/instagram.svg'
-import facebook from './assets/facebook.svg'
+import instagram from '../assets/instagram.svg'
+import facebook from '../assets/facebook.svg'
 
 const Layout = ({ children }) => {
   return (
