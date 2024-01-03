@@ -1,0 +1,50 @@
+.Layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex: 1;
+  }
+  
+  .App-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: black; /* Set background color to black */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .App-footer a {
+    margin: 0 15px; /* Add spacing between links */
+    color: white; /* Set text color to white */
+    text-decoration: none; /* Remove text underline */
+  }
+  
+  .App-footer a:hover,
+  .App-footer a:visited,
+  .App-footer a:active {
+    color: white; /* Keep text color white on hover, visited, and active */
+  }
+
+  .App-footer a {
+    margin: 0 15px; /* Spacing between links */
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 14px; /* Smaller font size */
+  }
+
+  .App-footer .social-links {
+    text-align: center;
+    margin-top: 10px; /* Space above the social links */
+  }
+  
+  .App-footer .social-links img {
+    width: 30px; /* Adjust as necessary */
+    height: auto;
+    margin: 0 10px; /* Space between logos */
+  }
+  
