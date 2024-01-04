@@ -1,0 +1,91 @@
+.menu {
+    background-color: black; /* Adjust the color as needed */
+    color: white;
+  }
+  
+  .menu-header {
+    position: relative; /* Relative positioning for the container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 30px;
+    padding: 10px;
+    height: 60px;
+  }
+  
+  .menu-logo {
+    position: absolute; /* Absolute positioning for the logo */
+    left: 10px; /* Adjust as needed */
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+  }
+  
+  .current-tab {
+    position: absolute; /* Absolute positioning for the title */
+    left: 50%; /* Center the title */
+    transform: translateX(-50%); /* Adjust for the width of the title */
+    /* Ensure the title doesn't overlap the logo */
+    padding-left: 50px; /* Adjust based on logo width */
+  }
+  
+  .menu-tabs {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap; /* Ensures tabs are in a single line */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    position: relative;
+    
+
+    /* For Chrome, Safari, and Opera */
+    ::-webkit-scrollbar {
+        display: none;
+    }
+  }
+
+  /* For Chrome, Safari, and Opera: Use this if the above doesn't work */
+  .menu-tabs::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .left-gradient, .right-gradient {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px; /* Adjust as needed */
+    pointer-events: none;
+    z-index: 10;
+    margin-top: 80px;
+    height: 45px;
+    z-index: -1; /* Set z-index to a negative value */
+  }
+
+  .left-gradient {
+    left: 0;
+    background: linear-gradient(to left, transparent, #333333 90%); /* Adjust color to match your design */
+  }
+  
+  .right-gradient {
+    right: 0;
+    background: linear-gradient(to right, transparent, #333333 90%);
+  }
+  
+  .tab-item {
+    flex: 0 0 auto; /* Don't grow or shrink */
+    padding: 10px 15px; /* Adjust as needed */
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .tab-item.active {
+    border-bottom: 2px solid white; /* Highlight for active tab */
+  }
+  
+  /* Add any additional styling as needed */
+  

@@ -1,5 +1,6 @@
 import avLogo from './assets/AV_Logo_weiss.svg';
 import Layout from './layout/Layout';
+import Menu from './menu/Menu';
 import LinkItem from './linkitem/LinkItem';
 import EarthlingEd from './assets/earthling_ed.jpg'
 import DE from './assets/Flag_of_Germany.svg'
@@ -10,12 +11,7 @@ function App() {
   return (
     <Layout>
       <div className="App">
-        <header className="App-header">
-            <img src={avLogo} className="App-logo" alt="AV_Logo" />
-            <p>
-              Website Work in Progress
-            </p>
-        </header>
+        <Menu/>
         <div className="link-items-container">
           <LinkItem
             title="Eine Rede, die dir die Augen öffnet!"
