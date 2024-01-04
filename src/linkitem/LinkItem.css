@@ -1,39 +1,84 @@
 .link-item {
     display: flex;
-    align-items: center;
-    justify-content: center;
     margin: 10px auto; /* Centering each item and adding margin */
     padding: 15px;
-    background-color: #f9f9f9; /* Light background for the box */
+    background-color: #333333; 
+    color: white;
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
     max-width: 500px; /* Maximum width of each item */
     width: 100%; /* Full width */
   }
+
+  .link-image-container {
+    width: 100px; /* Same width as the image */
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .link-image-spacer {
+    width: 100px;
+    margin-right: 15px;
+  }
   
   .link-image {
-    width: 100px; /* Adjust as needed */
-    height: 100px; /* Adjust as needed */
+    align-self: left;
+    width: 100px; 
+    height: 100px; 
     margin-right: 15px; /* Space between image and text */
     object-fit: cover; /* Ensure image covers the area nicely */
-    border-radius: 5px; /* Optional: rounded corners for images */
+    border-radius: 5px;
   }
   
   .link-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Align text to the start */
-    justify-content: center;
+    /*justify-content: space-between; /* Spread out the children */
+    width: 100%; /* Take full width to align children properly */
+  }
+
+  .language-container {
+    margin-top: auto; /* Pushes the language to the bottom */
+    width: 100%;
+  }
+
+  .language-image {
+    height: 10px
   }
   
   .link-title {
-    font-size: 18px; /* Adjust as needed */
-    color: #007bff; /* Adjust as needed */
-    text-decoration: none;
+    font-size: 18px;
+    text-align: left;
+    font-style: bolder;
+    margin-bottom: 10px; /* Pushes everything else down */
   }
   
-  .link-description, .link-dub, .link-sub {
-    font-size: 14px; /* Adjust as needed */
+  .link-description {
+    font-size: 14px;
     text-align: left; /* Align text to the left */
+    margin-top: auto; /* Stays at the bottom */
+  }
+
+  .link-language {
+    font-size: 14px;
+    text-align: left; /* Align text to the left */
+    margin-top: 10px;
+  }
+
+  @media (max-width: 600px) { /* Adjust the max-width as needed */
+    .link-item {
+      max-width: 400px;
+      /*flex-direction: column; /* Stack elements vertically on smaller screens */
+      /*align-items: center; /* Center-align items */
+      padding: 10px; /* Adjust padding for smaller screens */
+    }
+  
+    .link-image {
+      margin-bottom: 10px; /* Add space below the image */
+    }
+  
   }
   

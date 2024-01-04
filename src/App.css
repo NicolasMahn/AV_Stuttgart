@@ -48,6 +48,19 @@ body, html {
   flex-direction: column;
 }
 
+
+a:hover,
+a:visited,
+a:active {
+  color: white; /* Keep text color white on hover, visited, and active */
+  text-decoration: none; /* Remove underline */
+}
+
+a {
+  text-decoration: none; /* Remove underline */
+}
+
+
 /*.link-items-container {
   background-color: white;
   width: 80%; /* Adjust width as needed 
