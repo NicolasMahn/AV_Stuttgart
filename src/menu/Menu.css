@@ -17,7 +17,8 @@
   .menu-logo {
     position: absolute; /* Absolute positioning for the logo */
     left: 10px; /* Adjust as needed */
-    width: 200px; /* Adjust size as needed */
+    margin-top: 10px;
+    width: 70px; /* Adjust size as needed */
     height: auto;
   }
   
@@ -26,7 +27,7 @@
     left: 50%; /* Center the title */
     transform: translateX(-50%); /* Adjust for the width of the title */
     /* Ensure the title doesn't overlap the logo */
-    padding-left: 50px; /* Adjust based on logo width */
+    padding-left: 17px; /* Adjust based on logo width */
   }
   
   .menu-tabs {

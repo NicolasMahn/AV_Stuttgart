@@ -1,10 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Menu.css';
-import AV_Logo from '../assets/AV_Logo_Text_Querformat_weiss.svg';
+import AV_Logo from '../assets/AV_Logo_weiss.svg';
 
 const Menu = () => {
-  const [currentTab, setCurrentTab] = useState("Home");
-  const tabs = ["Home", "Topiqweqweqwewqeweqwc 1", "Topic 2", "Topic 3", "test"];
+  const tabs = [
+    { name: "Ethik", path: "/" },
+    { name: "Auf der Karte", path: "/auf-der-karte" },
+    { name: "Ernährung", path: "/ernaerung" },
+    { name: "Rezepte", path: "/rezepte" },
+    { name: "Weitere Informationen", path: "/weitere-informationen" }
+  ];
+  
+  
+  const [currentTab, setCurrentTab] = useState(tabs[0].name); // Define the currentTab state
+  const location = useLocation();
   const menuRef = useRef(null);
   const [showLeftGradient, setShowLeftGradient] = useState(false);
   const [showRightGradient, setShowRightGradient] = useState(true);
@@ -17,17 +27,11 @@ const Menu = () => {
     }
   };
 
+  // Update the current tab based on the URL
   useEffect(() => {
-    const menuNode = menuRef.current;
-    if (menuNode) {
-      handleScroll(); // Initial check
-      menuNode.addEventListener('scroll', handleScroll);
-
-      return () => {
-        menuNode.removeEventListener('scroll', handleScroll);
-      };
-    }
-  }, [menuRef.current]); // Add menuRef.current as a dependency
+    const currentTab = tabs.find(tab => tab.path === location.pathname)?.name || "Ethik";
+    setCurrentTab(currentTab);
+  }, [location]);
 
   return (
     <nav className="menu">
@@ -37,13 +41,9 @@ const Menu = () => {
       </div>
       <div className="menu-tabs" ref={menuRef}>
         {tabs.map(tab => (
-          <button
-            key={tab}
-            className={`tab-item ${currentTab === tab ? 'active' : ''}`}
-            onClick={() => setCurrentTab(tab)}
-          >
-            {tab}
-          </button>
+          <Link key={tab.name} to={tab.path} className={`tab-item ${currentTab === tab.name ? 'active' : ''}`}>
+            {tab.name}
+          </Link>
         ))}
       </div>
       {showLeftGradient && <div className="left-gradient"></div>}
