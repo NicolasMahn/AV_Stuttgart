@@ -18,7 +18,8 @@ const LinkItem = ({ title, url, image, description, dub, sub, dubAlt, subAlt }) 
                 <div className="link-title">{title}</div>
                 {description && <p className="link-description">{description}</p>}
                 <div className="language-container">
-                    {dub && sub && <div className="link-language">Dub&ensp;
+                    {dub && sub && 
+                    <div className="link-language">Dub&ensp;
                         <img src={dub} alt={dubAlt} className="language-image"/> | Sub&ensp; 
                         <img src={sub} alt={subAlt} className="language-image"/>
                     </div>}

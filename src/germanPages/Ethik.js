@@ -37,7 +37,7 @@ const Ethik = () => {
             />
             <LinkItem
                 title="Warum essen Veganer keine Eier aus dem Hinterhof?"
-                url="https://www.youtube.com/watch?v=Z3u7hXpOm58&hl=de&cc_lang_pref=de&cc_load_policy=1"
+                url="https://www.youtube.com/watch?v=7YFz99OT18k&hl=de&cc_lang_pref=de&cc_load_policy=1"
                 image={EarthlingEd}
                 dub={EN}
                 sub={DE}

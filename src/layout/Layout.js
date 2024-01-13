@@ -3,7 +3,7 @@ import './Layout.css';
 import instagram from '../assets/instagram.svg'
 import facebook from '../assets/facebook.svg'
 
-const Layout = ({ children }) => {
+const Layout = ({ children }) => {    
   return (
     <div className="Layout">
 
@@ -18,10 +18,11 @@ const Layout = ({ children }) => {
                 <img src={facebook} alt="Facebook" />
             </a>
         </div>
-
-        <a href="https://www.activistsforthevictims.de/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a>
-        <a href="https://www.activistsforthevictims.de/datenschutzerklaerung/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>
-        <a href="https://www.activistsforthevictims.de/spenden/" target="_blank" rel="noopener noreferrer">Spenden</a>
+        <span>
+          <a href="https://www.activistsforthevictims.de/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a>
+          <a href="https://www.activistsforthevictims.de/datenschutzerklaerung/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>
+          <a href="https://www.activistsforthevictims.de/spenden/" target="_blank" rel="noopener noreferrer">Spenden</a>
+        </span>
       </footer>
     </div>
   );

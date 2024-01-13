@@ -1,5 +1,5 @@
 .menu {
-    background-color: black; /* Adjust the color as needed */
+    background-color: black; 
     color: white;
   }
   
@@ -13,27 +13,21 @@
     padding: 10px;
     height: 60px;
   }
-  
-  .menu-logo {
-    position: absolute; /* Absolute positioning for the logo */
-    left: 10px; /* Adjust as needed */
-    margin-top: 10px;
-    width: 70px; /* Adjust size as needed */
-    height: auto;
-  }
+
   
   .current-tab {
     position: absolute; /* Absolute positioning for the title */
     left: 50%; /* Center the title */
-    transform: translateX(-50%); /* Adjust for the width of the title */
+    transform: translateX(-50%); 
     /* Ensure the title doesn't overlap the logo */
-    padding-left: 17px; /* Adjust based on logo width */
+    padding-left: 17px; 
   }
   
   .menu-tabs {
     display: flex;
     overflow-x: auto;
     white-space: nowrap; /* Ensures tabs are in a single line */
+    justify-content: center; /* Center the tab items */
     scrollbar-width: none; /* For Firefox */
     -ms-overflow-style: none;  /* For Internet Explorer and Edge */
     position: relative;
@@ -51,42 +45,92 @@
     height: 0;
   }
 
-  .left-gradient, .right-gradient {
+  .gradient { 
     content: '';
-    position: absolute;
+    position: relative;
     top: 0;
     bottom: 0;
-    width: 20px; /* Adjust as needed */
+    z-index: 1; /* Ensure it's above other elements */
     pointer-events: none;
-    z-index: 10;
-    margin-top: 80px;
-    height: 45px;
-    z-index: -1; /* Set z-index to a negative value */
+    width: 80px; 
+    margin-top: -60px;
+    height: 60px;
   }
 
-  .left-gradient {
-    left: 0;
-    background: linear-gradient(to left, transparent, #333333 90%); /* Adjust color to match your design */
+  #left-gradient {
+    background: linear-gradient(to left, transparent, #000000 90%);
   }
   
-  .right-gradient {
-    right: 0;
-    background: linear-gradient(to right, transparent, #333333 90%);
+  #right-gradient {
+    float: right;
+    background: linear-gradient(to right, transparent, #000000 90%);
   }
   
   .tab-item {
     flex: 0 0 auto; /* Don't grow or shrink */
-    padding: 10px 15px; /* Adjust as needed */
-    border: none;
+    margin-top: 5px;
+    margin-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 7px;
+    padding-bottom: 10px;
     background: none;
     color: white;
     cursor: pointer;
     font-size: 20px;
+    border: 2px solid white;
+    border-radius: 100px; /* Rounded corners */
   }
   
   .tab-item.active {
-    border-bottom: 2px solid white; /* Highlight for active tab */
+    color: black;
+    background-color: white;
+  }
+    
+  .menu-logo {
+    position: absolute; /* Absolute positioning for the logo */
+    left: 10px; 
+    margin-top: 10px;
+    width: 210px; 
+    height: auto;
   }
   
-  /* Add any additional styling as needed */
+  @media (max-width: 800px) {
+    .menu-tabs {
+      justify-content: left; /* Align tabs to left if not all menu items visible at once */
+    }
+  }
+
   
+  @media (max-width: 768px) {
+
+    .menu-logo {
+      width: 65px; /* Smaller size for smaller screens */
+    }
+  }
+
+
+  .scroll-button {
+    position: absolute;
+    top: 100px;
+    transform: translateY(-50%);
+    background-color: #333333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2; /* Ensure it's above other elements */
+    width: 35px; 
+    height: 35px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .scroll-button.left {
+    left: 0; /* Align to the left edge */
+  }
+  
+  .scroll-button.right {
+    right: 0; /* Align to the right edge */
+  }
