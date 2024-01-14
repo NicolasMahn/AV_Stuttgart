@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
 import './Menu.css';
-import AV_Logo from '../assets/AV_Logo_weiss.svg';
-import AV_Logo_Text from '../assets/AV_Logo_Text_Querformat_weiss.svg';
 
 const Menu = () => {
   const tabs = [
     { name: "Ethik", path: "/" },
-    { name: "Auf der Karte", path: "/auf-der-karte" },
+    { name: "Starthilfe", path: "/starthilfe" },
     { name: "Ernährung", path: "/ernaerung" },
     { name: "Rezepte", path: "/rezepte" },
     { name: "Weitere Informationen", path: "/weitere-informationen" }
@@ -18,7 +17,7 @@ const Menu = () => {
   const menuRef = useRef(null);
   const [showLeftGradient, setShowLeftGradient] = useState(false);
   const [showRightGradient, setShowRightGradient] = useState(true);
-  const [logo, setLogo] = useState(AV_Logo_Text); // State to manage the logo
+  const [logo, setLogo] = useState('/assets/AV_Logo_Text_Querformat_weiss.svg'); // State to manage the logo
   const [displayLogo, setDisplayLogo] = useState(true); // State to manage whether to display the logo
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768); // State to check if device is desktop
 
@@ -42,9 +41,9 @@ const Menu = () => {
       setDisplayLogo(true);
       // Set which logo to display
       if (width < 768) {
-        setLogo(AV_Logo);
+        setLogo('/assets/AV_Logo_weiss.svg');
       } else {
-        setLogo(AV_Logo_Text);
+        setLogo('/assets/AV_Logo_Text_Querformat_weiss.svg');
       }
     }
   };

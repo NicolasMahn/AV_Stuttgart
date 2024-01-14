@@ -1,7 +1,5 @@
 import React from 'react';
 import './Layout.css'; 
-import instagram from '../assets/instagram.svg'
-import facebook from '../assets/facebook.svg'
 
 const Layout = ({ children }) => {    
   return (
@@ -12,10 +10,10 @@ const Layout = ({ children }) => {
       <footer className="App-footer">
         <div className="social-links">
             <a href="https://www.instagram.com/activistsforthevictims_s/" target="_blank" rel="noopener noreferrer">
-                <img src={instagram} alt="Instagram" />
+                <img src='/assets/instagram.svg' alt="Instagram" />
             </a>
             <a href="https://www.facebook.com/ActivistsForTheVictims" target="_blank" rel="noopener noreferrer">
-                <img src={facebook} alt="Facebook" />
+                <img src='/assets/facebook.svg' alt="Facebook" />
             </a>
         </div>
         <span>

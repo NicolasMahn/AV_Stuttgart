@@ -1,0 +1,156 @@
+Ethik:
+  - title: "Dominion (2018)"
+    url: "https://www.youtube.com/watch?v=V7DrljVAaYk"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: "de"
+    sub: null
+    description: null
+    keywords: []
+
+  - title: "Was bedeutet Biofleisch (SOKO Tierschutz)"
+    url: "https://www.soko-tierschutz.org/bio"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: null
+    sub: null
+    description: null
+    keywords: []
+
+  - title: "Eine Rede, die dir die Augen öffnet!"
+    description: "Schau dir die aufrüttelnde Rede an, die Tausende von Studenten in Universitäten überall in Großbritannien hörten."
+    url: "https://www.youtube.com/watch?v=Z3u7hXpOm58&hl=de&cc_lang_pref=de&cc_load_policy=1"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: "en"
+    sub: "de"
+    keywords: []
+
+  - title: "Warum sind Veganer nicht einfach Vegetarier?"
+    url: "https://www.youtube.com/watch?v=pUsqS1k8Bu0"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: "en"
+    dub_alt: "EN"
+    sub: "de"
+    sub_alt: "DE"
+    keywords: []
+
+  - title: "MILK - Kurzfilm"
+    url: "https://www.youtube.com/watch?v=zX8BLGDNyxc"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "Norm - Kurzfilm"
+    url: "https://www.youtube.com/watch?v=poxl0K9UrP0&hl=de&cc_lang_pref=de&cc_load_policy=1"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: "en"
+    sub: "de"
+    keywords: []
+
+  - title: "Warum essen Veganer keine Eier aus dem Hinterhof?"
+    url: "https://www.youtube.com/watch?v=7YFz99OT18k&hl=de&cc_lang_pref=de&cc_load_policy=1"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: "en"
+    sub: "de"
+    keywords: []
+
+  - title: "Der geheime Grund warum wir Fleisch essen"
+    url: "https://www.youtube.com/watch?v=ao2GL3NAWQU&hl=de&cc_lang_pref=de&cc_load_policy=1"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: "en"
+    sub: "de"
+    keywords: []
+
+Starthilfe:
+  - title: "Der vegane Einkaufsguide"
+    url: "https://play.google.com/store/apps/details?id=org.petazwei.petazwei&hl=de&gl=US&pli=1"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: null
+    dub_alt: null
+    sub: null
+    sub_alt: null
+    keywords: []
+
+  - title: "HappyCow"
+    description: "Eine App um vegane Restaurants zu finden"
+    url: "https://play.google.com/store/apps/details?id=com.hcceg.veg.compassionfree&hl=de&gl=US"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: null
+    dub_alt: null
+    sub: null
+    sub_alt: null
+    keywords: []
+
+Ernaerung:
+  - title: "Veganer Multinährstoff"
+    description: "Watson Nutrion"
+    url: "https://watsonnutrition.de/produkt/proveg-essentials/"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "Get Better - Ernährung"
+    url: "https://get-better.me/ernaehrung/"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: null
+    sub: null
+    keywords: []
+
+Rezepte:  
+  - title: "Eat this! Veganes Foodblog seit 2011"
+    url: "http://eat-this.org"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: null
+    dub_alt: null
+    sub: null
+    sub_alt: null
+    keywords: []
+
+  - title: "Veganer Foodblog aus Berlin"
+    url: "https://www.zuckerjagdwurst.com/de"
+    image_url: "/assets/earthling_ed.jpg"
+    description: null
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "Vegane Rezepte von Rewe"
+    url: "https://www.rewe.de/rezeptsammlung/vegan-hauptspeise"
+    image_url: "/assets/earthling_ed.jpg"
+    description: null
+    dub: null
+    sub: null
+    keywords: []
+
+WeitereInformationen:
+  - title: "darumpflanzlich"
+    url: "https://www.instagram.com/darumpflanzlich/?hl=de"
+    image_url: "/assets/earthling_ed.jpg"
+    description: null
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "yammibean"
+    url: "https://www.instagram.com/yammibean/"
+    image_url: "/assets/earthling_ed.jpg"
+    description: null
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "vegansparen"
+    url: "https://www.instagram.com/vegansparen/?hl=de"
+    image_url: "/assets/earthling_ed.jpg"
+    description: null
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "vegan_check"
+    url: "https://www.instagram.com/vegan_check/?hl=de"
+    image_url: "/assets/earthling_ed.jpg"
+    description: null
+    dub: null
+    sub: null
+    keywords: []

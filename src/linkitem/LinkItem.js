@@ -1,8 +1,14 @@
 import React from 'react';
 import './LinkItem.css'; 
 
-const LinkItem = ({ title, url, image, description, dub, sub, dubAlt, subAlt }) => {
+const LinkItem = ({ title, url, image, description, dub, sub }) => {
   const hasImage = Boolean(image);
+
+  
+  const getFlagUrl = (languageCode) => {
+    return languageCode ? `/assets/Flag_${languageCode.toUpperCase()}.svg` : null;
+  };
+
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
@@ -20,11 +26,11 @@ const LinkItem = ({ title, url, image, description, dub, sub, dubAlt, subAlt }) 
                 <div className="language-container">
                     {dub && sub && 
                     <div className="link-language">Dub&ensp;
-                        <img src={dub} alt={dubAlt} className="language-image"/> | Sub&ensp; 
-                        <img src={sub} alt={subAlt} className="language-image"/>
+                        <img src={getFlagUrl(dub)} alt={dub} className="language-image"/> | Sub&ensp; 
+                        <img src={getFlagUrl(sub)} alt={sub} className="language-image"/>
                     </div>}
-                    {dub && !sub && <div className="link-language">Dub&ensp;<img src={dub} alt={dubAlt} className="language-image"/></div>}
-                    {!dub && sub && <div className="link-language">Sub&ensp;<img src={sub} alt={subAlt} className="language-image"/></div>}
+                    {dub && !sub && <div className="link-language">Dub&ensp;<img src={getFlagUrl(dub)} alt={dub} className="language-image"/></div>}
+                    {!dub && sub && <div className="link-language">Sub&ensp;<img src={getFlagUrl(sub)} alt={sub} className="language-image"/></div>}
                 </div>
             </div>
         </div>
