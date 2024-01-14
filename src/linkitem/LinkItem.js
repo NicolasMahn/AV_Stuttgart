@@ -23,7 +23,7 @@ const LinkItem = ({ title, url, image, description, dub, sub, dubAlt, subAlt }) 
                         <img src={dub} alt={dubAlt} className="language-image"/> | Sub&ensp; 
                         <img src={sub} alt={subAlt} className="language-image"/>
                     </div>}
-                    {dub && !sub && <div className="link-language">Dub&ensp;<img src={dub} alt={dubAlt} className="language-image"/> </div>}
+                    {dub && !sub && <div className="link-language">Dub&ensp;<img src={dub} alt={dubAlt} className="language-image"/></div>}
                     {!dub && sub && <div className="link-language">Sub&ensp;<img src={sub} alt={subAlt} className="language-image"/></div>}
                 </div>
             </div>

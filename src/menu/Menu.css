@@ -31,7 +31,7 @@
     scrollbar-width: none; /* For Firefox */
     -ms-overflow-style: none;  /* For Internet Explorer and Edge */
     position: relative;
-    
+    -webkit-tap-highlight-color: transparent; /* Makes tap highlight color transparent */
 
     /* For Chrome, Safari, and Opera */
     ::-webkit-scrollbar {
@@ -53,8 +53,8 @@
     z-index: 1; /* Ensure it's above other elements */
     pointer-events: none;
     width: 80px; 
-    margin-top: -60px;
-    height: 60px;
+    margin-top: -50px;
+    height: 50px;
   }
 
   #left-gradient {

@@ -20,4 +20,5 @@ a:active {
 
 a {
   text-decoration: none; /* Remove underline */
+  -webkit-tap-highlight-color: transparent; /* Makes tap highlight color transparent */
 }
