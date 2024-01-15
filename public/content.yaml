@@ -82,7 +82,7 @@ Starthilfe:
     sub: null
     keywords: []
 
-Ernaerung:
+Ernährung:
   - title: "Veganer Multinährstoff"
     description: "Watson Nutrion"
     url: "https://watsonnutrition.de/produkt/proveg-essentials/"
@@ -122,7 +122,7 @@ Rezepte:
     sub: null
     keywords: []
 
-WeitereInformationen:
+Weitere Informationen:
   - title: "darumpflanzlich"
     url: "https://www.instagram.com/darumpflanzlich/?hl=de"
     image_url: "/assets/earthling_ed.jpg"

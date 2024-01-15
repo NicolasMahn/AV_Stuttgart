@@ -9,11 +9,11 @@ import './App.css';
 
 function App() {
   const routes = [
-    { name: "Ethik", yaml_name: "Ethik", path: "/" },
-    { name: "Starthilfe", yaml_name: "Starthilfe", path: "/starthilfe" },
-    { name: "Ernährung", yaml_name: "Ernaehrung", path: "/ernaerung" },
-    { name: "Rezepte", yaml_name: "Rezepte", path: "/rezepte" },
-    { name: "Weitere Informationen", yaml_name: "WeitereInformationen", path: "/weitere-informationen" }
+    { name: "Ethik", path: "/" },
+    { name: "Starthilfe", path: "/starthilfe" },
+    { name: "Ernährung", path: "/ernaerung" },
+    { name: "Rezepte", path: "/rezepte" },
+    { name: "Weitere Informationen", path: "/weitere-informationen" }
   ];  
 
   return (
@@ -25,7 +25,7 @@ function App() {
             <Route
               key={category.name}
               path={category.path}
-              element={<GenericPage category={category.yaml_name} />}
+              element={<GenericPage category={category.name} />}
             />
           ))}
         </Routes>
