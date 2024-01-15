@@ -1,44 +1,34 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import Menu from './menu/Menu';
 import Layout from './layout/Layout';
-import GenericPage from './GenericPage'
+import GenericPage from './GenericPage';
 
 import './App.css';
 
 function App() {
-  const Ethik = () => {
-    return <GenericPage category="Ethik" />;
-  };
-
-  const Starthilfe = () => {
-    return <GenericPage category="Starthilfe" />;
-  };
-
-  const Ernaerung = () => {
-    return <GenericPage category="Ernaerung" />;
-  };
-
-  const Rezepte = () => {
-    return <GenericPage category="Rezepte" />;
-  };
-
-  const WeitereInformationen = () => {
-    return <GenericPage category="WeitereInformationen" />;
-  };
+  const routes = [
+    { name: "Ethik", yaml_name: "Ethik", path: "/" },
+    { name: "Starthilfe", yaml_name: "Starthilfe", path: "/starthilfe" },
+    { name: "Ernährung", yaml_name: "Ernaehrung", path: "/ernaerung" },
+    { name: "Rezepte", yaml_name: "Rezepte", path: "/rezepte" },
+    { name: "Weitere Informationen", yaml_name: "WeitereInformationen", path: "/weitere-informationen" }
+  ];  
 
   return (
     <Layout>
       <Router>
-          <Menu/>
-          <Routes>
-            <Route path="/" element={<Ethik />} />
-            <Route path="/starthilfe" element={<Starthilfe />} />
-            <Route path="/ernaerung" element={<Ernaerung />} />
-            <Route path="/rezepte" element={<Rezepte />} />
-            <Route path="/weitere-informationen" element={<WeitereInformationen />} />
-          </Routes>
+        <Menu routes={routes} />
+        <Routes>
+          {routes.map(category => (
+            <Route
+              key={category.name}
+              path={category.path}
+              element={<GenericPage category={category.yaml_name} />}
+            />
+          ))}
+        </Routes>
       </Router>
     </Layout>
   );

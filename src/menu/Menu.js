@@ -3,15 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 
 import './Menu.css';
 
-const Menu = () => {
-  const tabs = [
-    { name: "Ethik", path: "/" },
-    { name: "Starthilfe", path: "/starthilfe" },
-    { name: "Ernährung", path: "/ernaerung" },
-    { name: "Rezepte", path: "/rezepte" },
-    { name: "Weitere Informationen", path: "/weitere-informationen" }
-  ];  
-  
+const Menu = ({ routes }) => {
+  const tabs = routes;
+
   const [currentTab, setCurrentTab] = useState(tabs[0].name); // Define the currentTab state
   const location = useLocation();
   const menuRef = useRef(null);
