@@ -58,7 +58,7 @@ Die geupdatete Website sollte in den nächsten 3 Stunden Live sein.
 Um einen neuen Menü-Punkt zu erstellen, muss man in der [content.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content.yaml) einen neuen Überpunkt anlegen.
 Danach muss man noch die [App.js](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/src/App.js) editieren. 
 Dabei steht... \
-..."name" für den Anzeige Name. Dieser Name muss mit dem Namen dees Überpunkts in der Yaml-Date übereinstimmen.\
+..."name" für den Anzeige Name. Dieser Name muss mit dem Namen des Überpunkts in der Yaml-Date übereinstimmen.\
 ..."path" ist der pfad der oben in der url angezeigt wird, hier nur Zeichen verwenden, die auch in einer URL auftauchen dürfen.
 
 <img width="402" alt="image" src="https://github.com/NicolasMahn/AV_Stuttgart/assets/64785342/65ac3d8e-b6e2-4573-965f-8440a6800050">
