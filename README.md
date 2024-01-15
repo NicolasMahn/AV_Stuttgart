@@ -9,6 +9,8 @@ Wenn man Inhalt hinzufügen will, oder ändern will, muss man einfach das [conte
 Dann kann man den Link zu einer Quelle hinzufügen. Dafür muss man sich zuerst überlegen unter welcher Überkategorie die Quelle fällt. Die Reihenfolge der Links in der yaml Datei entspricht der Anzeige Reihenfolge auf der Website.
 Beispielsweise wird hier die Rede von Joey Carbstrong hinzufügen ([Link zum Video](https://www.youtube.com/watch?v=4XDVGgZijLA)). Diese fällt unter die Kategorie Ethik.
 Dafür muss ich einen Titel hinzufügen, den Link, und am besten auch in welcher Sprache das Video ist. Wenn man will kann man auch eine 'description' zu der Quelle hinzufügen.
+Bei den Spach-Kategorieen, bitte nur 'de' für deutsch ode 'en' für englisch schreiben.
+Das Feld keywords ist noch nicht implementiert (kann man also leer lassen.
 
 ```
   - title: "Wieso wir vegan leben sollten!"
