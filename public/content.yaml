@@ -7,6 +7,14 @@ Ethik:
     description: null
     keywords: []
 
+  - title: "Wieso wir vegan leben sollten!"
+    description: "Die Rede des australischen Tierrechtsaktivisten Joey Carbstrong in Oxford, in der er für eine vegane Welt argumentiert"
+    url: "https://www.youtube.com/watch?v=4XDVGgZijLA"
+    image_url: "/assets/Joey_Carbstrong.jpg"
+    dub: "en"
+    sub: null
+    keywords: []
+
   - title: "Was bedeutet Biofleisch (SOKO Tierschutz)"
     url: "https://www.soko-tierschutz.org/bio"
     image_url: "/assets/earthling_ed.jpg"
