@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Website AV Stuttgart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Wie füge ich Inhalt hinzu?
 
-## Available Scripts
+Wenn man Inhalt hinzufügen will, oder ändern will, muss man einfach das [content.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content.yaml) aufmachen und editieren.
 
-In the project directory, you can run:
+<img width="414" alt="image" src="https://github.com/NicolasMahn/AV_Stuttgart/assets/64785342/fd2e905c-3a3f-4946-b206-61ab891980ad">
 
-### `npm start`
+Dann kann man den Link zu einer Quelle hinzufügen. Dafür muss man sich zuerst überlegen unter welcher Überkategorie die Quelle fällt. Die Reihenfolge der Links in der yaml Datei entspricht der Anzeige Reihenfolge auf der Website.
+Beispielsweise wird hier die Rede von Joey Carbstrong hinzufügen ([Link zum Video](https://www.youtube.com/watch?v=4XDVGgZijLA)). Diese fällt unter die Kategorie Ethik.
+Dafür muss ich einen Titel hinzufügen, den Link, und am besten auch in welcher Sprache das Video ist. Wenn man will kann man auch eine 'description' zu der Quelle hinzufügen.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+  - title: "Wieso wir vegan leben sollten!"
+    description: "Die Rede des australischen Tierrechtsaktivisten Joey Carbstrong in Oxford, in der er für eine vegane Welt argumentiert"
+    url: "https://www.youtube.com/watch?v=4XDVGgZijLA"
+    image_url: null # Was man für das Bild machen soll, kommt im nächsten Abschnitt
+    dub: "en"
+    sub: null
+    keywords: []
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Wenn ein Youtube Video mit deutschen Untertiteln (und englischem Dubbing) hinzugefügt wird empfiehlt es sich diese Erweiterung `&hl=de&cc_lang_pref=de&cc_load_policy=1` an den Link anzuhängen. Das aktieviert automatisch Untertitel wenn man bei Youtube nicht angemeldet ist.
 
-### `npm test`
+Um ein Bild hinzuzufügen muss man sich ein Bild raussuchen und dieses am besten auf 100px zu 100px zuschneiden. Dieses Bild muss man dann in den ['assets' Ordner](https://github.com/NicolasMahn/AV_Stuttgart/tree/main/public/assets) ablegen.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1.
+<img width="566" alt="image" src="https://github.com/NicolasMahn/AV_Stuttgart/assets/64785342/e364dd7b-d062-42ab-b37c-78f324629fc3">
 
-### `npm run build`
+2.
+<img width="552" alt="image" src="https://github.com/NicolasMahn/AV_Stuttgart/assets/64785342/1a1c016c-d4b8-4f1d-9cbb-c7579ea7f36b">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Jetzt muss man 'den weg zum Bild' Machinenleserlich in die yaml hinzufügen.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+  - title: "Wieso wir vegan leben sollten!"
+    description: "Die Rede des australischen Tierrechtsaktivisten Joey Carbstrong in Oxford, in der er für eine vegane Welt argumentiert"
+    url: "https://www.youtube.com/watch?v=4XDVGgZijLA"
+    image_url: "/assets/Joey_Carbstrong.jpg"
+    dub: "en"
+    sub: null
+    keywords: []
+```
+Jetzt muss man die content.yaml noch speichern:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1.
+<img width="383" alt="image" src="https://github.com/NicolasMahn/AV_Stuttgart/assets/64785342/cc6ef97f-c64b-43ba-bd52-74aa12b3caed">
 
-### `npm run eject`
+2.
+<img width="322" alt="image" src="https://github.com/NicolasMahn/AV_Stuttgart/assets/64785342/609f37db-035e-45b8-940f-ec2aa5331142">
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Die geupdatete Website sollte in den nächsten 3 Stunden Live sein.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<img width="418" alt="image" src="https://github.com/NicolasMahn/AV_Stuttgart/assets/64785342/d39afe34-7ab2-41d8-ad46-95f892613962">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
