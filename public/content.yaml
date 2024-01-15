@@ -27,9 +27,7 @@ Ethik:
     url: "https://www.youtube.com/watch?v=pUsqS1k8Bu0"
     image_url: "/assets/earthling_ed.jpg"
     dub: "en"
-    dub_alt: "EN"
     sub: "de"
-    sub_alt: "DE"
     keywords: []
 
   - title: "MILK - Kurzfilm"
@@ -65,9 +63,7 @@ Starthilfe:
     url: "https://play.google.com/store/apps/details?id=org.petazwei.petazwei&hl=de&gl=US&pli=1"
     image_url: "/assets/earthling_ed.jpg"
     dub: null
-    dub_alt: null
     sub: null
-    sub_alt: null
     keywords: []
 
   - title: "HappyCow"
@@ -75,9 +71,7 @@ Starthilfe:
     url: "https://play.google.com/store/apps/details?id=com.hcceg.veg.compassionfree&hl=de&gl=US"
     image_url: "/assets/earthling_ed.jpg"
     dub: null
-    dub_alt: null
     sub: null
-    sub_alt: null
     keywords: []
 
 Ernaerung:
@@ -101,9 +95,7 @@ Rezepte:
     url: "http://eat-this.org"
     image_url: "/assets/earthling_ed.jpg"
     dub: null
-    dub_alt: null
     sub: null
-    sub_alt: null
     keywords: []
 
   - title: "Veganer Foodblog aus Berlin"
