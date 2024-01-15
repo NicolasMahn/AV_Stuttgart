@@ -24,7 +24,7 @@ Das Feld keywords ist noch nicht implementiert (kann man also leer lassen.
 
 Wenn ein Youtube Video mit deutschen Untertiteln (und englischem Dubbing) hinzugefügt wird empfiehlt es sich diese Erweiterung `&hl=de&cc_lang_pref=de&cc_load_policy=1` an den Link anzuhängen. Das aktieviert automatisch Untertitel wenn man bei Youtube nicht angemeldet ist.
 
-Um ein Bild hinzuzufügen muss man sich ein Bild raussuchen und dieses am besten auf 100px zu 100px zuschneiden. Dieses Bild muss man dann in den ['assets' Ordner](https://github.com/NicolasMahn/AV_Stuttgart/tree/main/public/assets) ablegen.
+Um ein Bild hinzuzufügen muss man sich ein Bild raussuchen und dieses am besten zu einem quadratischen Bild zuschneiden. Dieses Bild muss man dann in den ['assets' Ordner](https://github.com/NicolasMahn/AV_Stuttgart/tree/main/public/assets) ablegen.
 
 1.
 <img width="566" alt="image" src="https://github.com/NicolasMahn/AV_Stuttgart/assets/64785342/e364dd7b-d062-42ab-b37c-78f324629fc3">
