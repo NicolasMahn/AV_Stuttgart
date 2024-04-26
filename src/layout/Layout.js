@@ -1,4 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import Datenschutz from '../Datenschutz';
+
 import './Layout.css'; 
 
 const Layout = ({ children }) => {    
@@ -9,17 +13,24 @@ const Layout = ({ children }) => {
 
       <footer className="App-footer">
         <div className="social-links">
-            <a href="https://www.instagram.com/activistsforthevictims_s/" target="_blank" rel="noopener noreferrer">
-                <img src='/assets/instagram.svg' alt="Instagram" />
-            </a>
-            <a href="https://www.facebook.com/ActivistsForTheVictims" target="_blank" rel="noopener noreferrer">
-                <img src='/assets/facebook.svg' alt="Facebook" />
-            </a>
+          <a href="mailto:activistsforthevictims_stuttgart@protonmail.com" target="_blank" rel="noopener noreferrer">
+              <img src='/assets/kontakt.svg' alt="Email Kontakt" />
+          </a>
+          <a href="https://www.instagram.com/activistsforthevictims_s/" target="_blank" rel="noopener noreferrer">
+              <img src='/assets/instagram.svg' alt="Instagram" />
+          </a>
+          <a href="https://www.facebook.com/ActivistsForTheVictims" target="_blank" rel="noopener noreferrer">
+              <img src='/assets/facebook.svg' alt="Facebook" />
+          </a>
+          <a href="https://www.activistsforthevictims.de/" target="_blank" rel="noopener noreferrer">
+              <img src='/assets/internet.svg' alt="Website" />
+          </a>
         </div>
         <span>
-          <a href="https://www.activistsforthevictims.de/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a>
-          <a href="https://www.activistsforthevictims.de/datenschutzerklaerung/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>
-          <a href="https://www.activistsforthevictims.de/spenden/" target="_blank" rel="noopener noreferrer">Spenden</a>
+          <Link to="/datenschutz">Datenschutzerklärung</Link>
+          <Link to="/impressum">Impressum</Link>
+          {//<Link to="/spenden">Spenden (in dev)</Link>
+          }
         </span>
       </footer>
     </div>

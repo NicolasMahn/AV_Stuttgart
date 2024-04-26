@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTab } from './TabContext'
 import { Link, useLocation } from 'react-router-dom';
 
 import './Menu.css';
@@ -6,7 +7,7 @@ import './Menu.css';
 const Menu = ({ routes }) => {
   const tabs = routes;
 
-  const [currentTab, setCurrentTab] = useState(tabs[0].name); // Define the currentTab state
+  const [currentTab, setCurrentTab] = useTab();
   const location = useLocation();
   const menuRef = useRef(null);
   const [showLeftGradient, setShowLeftGradient] = useState(false);
@@ -83,12 +84,6 @@ const Menu = ({ routes }) => {
     return () => window.removeEventListener('resize', updateLogoAndDisplay);
   }, []);
 
-  // The Tabbing logic
-  useEffect(() => {
-    const currentTab = tabs.find(tab => tab.path === location.pathname)?.name || "Ethik";
-    setCurrentTab(currentTab);
-  }, [location]);
-
   // The Scroll-logic of the Tabbar
   useEffect(() => {
     const menuNode = menuRef.current;
@@ -102,6 +97,12 @@ const Menu = ({ routes }) => {
     }
   }, [menuRef.current]);
 
+  useEffect(() => {
+    const path = location.pathname;
+    const foundTab = routes.find(tab => tab.path === path);
+    setCurrentTab(foundTab ? foundTab.name : "");
+  }, [location, routes, setCurrentTab]);
+
   return (
     <nav className="menu">    
       <div className="menu-header">
@@ -109,11 +110,13 @@ const Menu = ({ routes }) => {
         <div className="current-tab">{currentTab}</div>
       </div>
       <div className="menu-tabs" ref={menuRef}>
+        &emsp;
         {tabs.map(tab => (
           <Link key={tab.name} to={tab.path} className={`tab-item ${currentTab === tab.name ? 'active' : ''}`}>
             {tab.name}
           </Link>
         ))}
+        &ensp;
       </div>
       {showLeftGradient && <div className="gradient" id="left-gradient"></div>}
       {showRightGradient && <div className="gradient" id="right-gradient"></div>}
