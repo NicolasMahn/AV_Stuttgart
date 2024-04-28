@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import Menu from './menu/Menu';
@@ -14,7 +14,14 @@ import './App.css';
 import { TabProvider } from './menu/TabContext';
 
 function App() {
-  const routes = [
+  const [language, setLanguage] = useState('de');
+
+  const toggleLanguage = () => {
+    setLanguage(prevLanguage => prevLanguage === 'de' ? 'en' : 'de');
+  };
+
+  const fileNameDE = "/content_de.yaml"
+  const routesDE = [
     { name: "Ethik", path: "/" },
     { name: "Starthilfe", path: "/starthilfe" },
     { name: "Ernährung", path: "/ernaerung" },
@@ -22,17 +29,29 @@ function App() {
     { name: "Weitere Informationen", path: "/weitere-informationen" }
   ];  
 
+  const fileNameEN = "/content_en.yaml"
+  const routesEN = [
+    { name: "Ethics", path: "/en/" },
+    { name: "How to go vegan", path: "/en/how-to-go-vegan" },
+    { name: "Nutrition", path: "/en/nutrition" },
+    { name: "Recipes", path: "/en/recipes" },
+    { name: "More Information", path: "/en/more-information" }
+  ];
+
+  const currentRoutes = language === 'de' ? routesDE : routesEN;
+  const currentFileName = language === 'de' ? fileNameDE : fileNameEN;
+
   return (
     <Router>
       <TabProvider>
         <Layout>
-          <Menu routes={routes} />
+        <Menu routes={currentRoutes} language={language} toggleLanguage={toggleLanguage} />
           <Routes>
-            {routes.map(category => (
+            {currentRoutes.map(category => (
               <Route
                 key={category.name}
                 path={category.path}
-                element={<GenericPage category={category.name} />}
+                element={<GenericPage category={category.name} fileName={currentFileName}/>}
               />
             ))}
             <Route path="/datenschutz" element={<Datenschutz />} />

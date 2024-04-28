@@ -134,3 +134,9 @@
   .scroll-button.right {
     right: 0; /* Align to the right edge */
   }
+
+
+  .language-toggle {
+    position: absolute;
+    right: 0
+  }

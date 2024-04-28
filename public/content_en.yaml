@@ -1,0 +1,211 @@
+Ethics:
+  - title: "Dominion (2018)"
+    url: "https://www.youtube.com/watch?v=LQRAfJyEsko"
+    image_url: "/assets/dominion.jpg"
+    dub: "en"
+    sub: null
+    description: null
+    keywords: []
+
+  - title: "An eye-opening speech!"
+    description: "A stirring speech heard by thousands of students in universities across the UK."
+    url: "https://www.youtube.com/watch?v=Z3u7hXpOm58"
+    image_url: "/assets/earthling_ed.jpg"
+    dub: "en"
+    sub: null
+    keywords: []
+
+  - title: "TODO: Was bedeutet Biofleisch (SOKO Tierschutz)"
+    url: "https://www.soko-tierschutz.org/bio"
+    image_url: "/assets/soko.webp"
+    dub: null
+    sub: null
+    description: null
+    keywords: []
+
+  - title: "The ONLY Pig \"Farm\" You Should EVER Support... "
+    url: "https://www.youtube.com/watch?v=A1WF21N0m8k"
+    image_url: "/assets/retreat.webp"
+    dub: "en"
+    sub: null
+    keywords: []
+
+  - title: "Why aren't vegans just vegetarian?"
+    url: "https://www.youtube.com/watch?v=pUsqS1k8Bu0"
+    image_url: "/assets/käse.webp"
+    dub: "en"
+    sub: null
+    keywords: []
+
+  - title: "\"Norm\" - Shortfilm"
+    url: "https://www.youtube.com/watch?v=poxl0K9UrP0"
+    description: "\"Norm\" is a short film about two roommates talking about the morality of rape in a society where it is legal and socially acceptable to rape women. #itsnotaboutrape (it's not about rape)"
+    image_url: "/assets/norm.jpg"
+    dub: "en"
+    sub: null
+    keywords: []
+
+  - title: "Why don't vegans eat eggs from the backyard?"
+    url: "https://www.youtube.com/watch?v=7YFz99OT18k"
+    image_url: "/assets/ei.webp"
+    dub: "en"
+    sub: null
+    keywords: []
+
+  - title: "The secret reason why we eat meat"
+    url: "https://www.youtube.com/watch?v=ao2GL3NAWQU"
+    image_url: "/assets/beyond_carnism.jpg"
+    dub: "en"
+    sub: null
+    keywords: []
+
+  - title: "A POWERFUL Speech That All Of Humanity MUST SEE"
+    description: "Joey Carbstrong at Oxford Union"
+    url: "https://www.youtube.com/watch?v=4XDVGgZijLA"
+    image_url: "/assets/joey_carbstrong.jpg"
+    dub: "en"
+    sub: null
+    keywords: []
+
+How to go vegan:
+  - title: "Vegan werden"
+    url: "https://www.youtube.com/watch?v=iACH3ubDynA"
+    image_url: "/assets/lisa_sophie_laurent.jpg"
+    description: "Die 10 wichtigsten Tipps für Anfänger"
+    dub: "de"
+    sub: null
+    keywords: []
+
+  - title: "How to go Vegan"
+    url: "https://www.youtube.com/watch?v=1YnJqoPmR8s&t=22s"
+    image_url: "/assets/how_to_go_vegan.png"
+    description: "in 5 simple steps"
+    dub: "en"
+    sub: null
+    keywords: []
+
+  - title: "Der vegane Einkaufsguide"
+    url: "https://play.google.com/store/apps/details?id=org.petazwei.petazwei&hl=de&gl=US&pli=1"
+    image_url: "/assets/peta2.jpg"
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "HappyCow"
+    description: "Eine App um vegane Restaurants zu finden"
+    url: "https://play.google.com/store/apps/details?id=com.hcceg.veg.compassionfree&hl=de&gl=US"
+    image_url: "/assets/happy_cow.png"
+    dub: null
+    sub: null
+    keywords: []
+
+Nutrition:
+  - title: "Optimal vegan ernährt - wir zeigen dir, wie's geht"
+    description: "Vegane Ernährung - wie kann ich sie optimal umsetzen? Welche Lebensmittel brauche ich dafür und wie viel von ihnen? Welche Nährstoffe sind besonders wichtig für mich? Damit haben wir uns beschäftigt und auf wissenschaftlicher Basis die Gießener Vegane Lebensmittelpyramide entwickelt. Sie ist die erste wissenschaftsbasierte Pyramide für vegane Ernährung von Erwachsenen.  "
+    url: "https://www.youtube.com/watch?v=urCNiqlUJDE"
+    image_url: "/assets/markus_keller.jpg"
+    dub: de
+    sub: null
+    keywords: []
+
+  - title: "Veganer Multinährstoff"
+    description: "von Watson Nutrion"
+    url: "https://watsonnutrition.de/produkt/proveg-essentials/"
+    image_url: "/assets/pro_veg.png"
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "Get Better - Ernährung"
+    url: "https://get-better.me/ernaehrung/"
+    image_url: "/assets/get_better.png"
+    description: "ein Blog über gesunde Ernährung"
+    dub: null
+    sub: null
+    keywords: []
+
+Recipes:  
+  - title: "Vegane Spinatknödel mit \"Käsesauce\""
+    url: "https://www.eat-this.org/vegane-spinatknoedel-mit-kaesesauce/"
+    image_url: "/assets/eat_this_vegane_spinatknoedel_mit_kaesesauce.jpg"
+    dub: null
+    sub: null
+    keywords: []
+  
+  - title: "Vegane Filets in Pfifferling-Rahm-Pfeffer-Soße mit Miniknödeln"
+    url: "https://www.zuckerjagdwurst.com/de/rezepte/vegane-filets-in-pfifferling-rahm-pfeffer-sosse-mit-miniknoedeln"
+    image_url: "/assets/Knödel+mit+Filets+und+veganer+Pfifferling-Rahm-(Pfeffer)-Soße.webp"
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "Cremiges Orzotto mit veganen Hackbällchen & Spinat"
+    url: "https://www.zuckerjagdwurst.com/de/rezepte/cremiges-orzotto-mit-veganen-hackbaellchen-spinat"
+    image_url: "/assets/R892+-+Greenforce+-+Orzotto+mit+veganen+Hackbällchen+&+Spinat-79.webp"
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "Vegane Quarkbällchen"
+    url: "https://www.eat-this.org/vegane-quarkbaellchen/"
+    image_url: "/assets/eat_this_vegane_quarkbaellchen_012-960x1440.jpg"
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "Eat this!"
+    description: "Veganer Foodblog. Est. 2011"
+    url: "http://eat-this.org"
+    image_url: "/assets/eat-this.png"
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "Zucker & Jagdwurst"
+    description: "Veganer Foodblog aus Berlin"
+    url: "https://www.zuckerjagdwurst.com/de"
+    image_url: "/assets/zucker_jagdwurst.svg"
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "Vegane Rezepte von Rewe"
+    url: "https://www.rewe.de/rezeptsammlung/vegan-hauptspeise"
+    image_url: "/assets/rewe.avif"
+    description: null
+    dub: null
+    sub: null
+    keywords: []
+
+More Information:
+  - title: "darumpflanzlich"
+    url: "https://www.instagram.com/darumpflanzlich/?hl=de"
+    image_url: "/assets/darumpflanzlich.jpg"
+    description: null
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "yammibean"
+    url: "https://www.instagram.com/yammibean/"
+    image_url: "/assets/yammibean.jpg"
+    description: null
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "vegansparen"
+    url: "https://www.instagram.com/vegansparen/?hl=de"
+    image_url: "/assets/vegansparen.jpg"
+    description: null
+    dub: null
+    sub: null
+    keywords: []
+
+  - title: "vegan_check"
+    url: "https://www.instagram.com/vegan_check/?hl=de"
+    image_url: "/assets/vegancheck.jpg"
+    description: null
+    dub: null
+    sub: null
+    keywords: []

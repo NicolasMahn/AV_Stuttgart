@@ -4,9 +4,9 @@ import { Link, useLocation } from 'react-router-dom';
 
 import './Menu.css';
 
-const Menu = ({ routes }) => {
-  const tabs = routes;
+const Menu = ({routes, language, toggleLanguage }) => {
 
+  const tabs = routes;
   const [currentTab, setCurrentTab] = useTab();
   const location = useLocation();
   const menuRef = useRef(null);
@@ -108,6 +108,9 @@ const Menu = ({ routes }) => {
       <div className="menu-header">
         {displayLogo && <img src={logo} alt="Logo" className="menu-logo" />}
         <div className="current-tab">{currentTab}</div>
+        {/*<button onClick={toggleLanguage} className="language-toggle">
+          Switch to {language === 'de' ? 'EN' : 'DE'}
+        </button>*/}
       </div>
       <div className="menu-tabs" ref={menuRef}>
         &emsp;

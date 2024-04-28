@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Datenschutz from '../Datenschutz';
-
 import './Layout.css'; 
 
 const Layout = ({ children }) => {    

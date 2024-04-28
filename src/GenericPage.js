@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import yaml from 'js-yaml';
 import LinkItem from './linkitem/LinkItem';
 
-const LinksPage = ({ category }) => {
+const LinksPage = ({ category, fileName }) => {
     const [links, setLinks] = useState([]);
 
     useEffect(() => {
-        fetch('/content.yaml')
+        fetch(fileName)
             .then(response => response.text())
             .then(text => yaml.load(text))
             .then(data => {
