@@ -21,7 +21,7 @@ const Impressum = () => {
             <p>&nbsp;</p>
             <p>Vereinsregister des Amtsgerichts Frankfurt am Main: VR 16858</p>
             <h3>Kontakt</h3>
-            <p>Telefon: +49 6031 964 7883<br/>E-Mail: activistsforthevictims_stuttgart@protonmail.com</p>
+            <p>E-Mail: activistsforthevictims_stuttgart@protonmail.com</p>
             <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
             <p>Activists for the Victims e.V.<br/>c/o Cocenter<br/>Koppoldstr. 1</p>
             <p>86551 Aichach</p>
