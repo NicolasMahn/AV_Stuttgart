@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import Menu from './menu/Menu';
 import Layout from './layout/Layout';
@@ -24,7 +24,7 @@ function App() {
   const routesDE = [
     { name: "Ethik", path: "/" },
     { name: "Starthilfe", path: "/starthilfe" },
-    { name: "Ernährung", path: "/ernaerung" },
+    { name: "Ernährung", path: "/ernaehrung" },
     { name: "Rezepte", path: "/rezepte" },
     { name: "Weitere Informationen", path: "/weitere-informationen" }
   ];  
@@ -58,6 +58,7 @@ function App() {
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/spenden" element={<Spenden />} />
             <Route path="/kontakt" element={<Kontakt />} />
+            <Route path="/karte" element={<Navigate to="/" />} />
           </Routes>
         </Layout>
       </TabProvider>
@@ -66,8 +67,3 @@ function App() {
 }
 
 export default App;
-
-// How to start app localy (for tests):
-// npx create-react-app my-app
-// npm start
-// (page should open on its own, otherwise: http://localhost:3000/)
