@@ -84,13 +84,6 @@ Starthilfe:
     sub: null
     keywords: []
 
-  - title: "Der vegane Einkaufsguide"
-    url: "https://play.google.com/store/apps/details?id=org.petazwei.petazwei&hl=de&gl=US&pli=1"
-    image_url: "/assets/peta2.jpg"
-    dub: null
-    sub: null
-    keywords: []
-
   - title: "HappyCow"
     description: "Eine App um vegane Restaurants zu finden"
     url: "https://play.google.com/store/apps/details?id=com.hcceg.veg.compassionfree&hl=de&gl=US"
