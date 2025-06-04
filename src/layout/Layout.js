@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
           <a href="mailto:activistsforthevictims_stuttgart@protonmail.com" target="_blank" rel="noopener noreferrer">
               <img src='/assets/kontakt.svg' alt="Email Kontakt" />
           </a>
-          <a href="https://www.instagram.com/activistsforthevictims_s/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/acvi.stuttgart?igsh=NWFnaGx5YnRzdGdo" target="_blank" rel="noopener noreferrer">
               <img src='/assets/instagram.svg' alt="Instagram" />
           </a>
           <a href="https://www.facebook.com/ActivistsForTheVictims" target="_blank" rel="noopener noreferrer">
