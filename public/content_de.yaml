@@ -23,6 +23,14 @@ Ethik:
     description: null
     keywords: []
 
+  - title: "Tierquälerei 'Made in Germany'"
+    url: "https://tierschutz-skandale.de/"
+    image_url: "/assets/krankes_schwein.jpg"
+    dub: null
+    sub: null
+    description: null
+    keywords: []
+
   - title: "Die einzige Schweine\"farm\" die wir unterstützen sollten"
     url: "https://www.youtube.com/watch?v=A1WF21N0m8k"
     image_url: "/assets/retreat.webp"
@@ -68,6 +76,14 @@ Ethik:
     keywords: []
 
 Starthilfe:
+  - title: "Vegan Start"
+    url: "https://play.google.com/store/search?q=veganstart&c=apps"
+    image_url: "/assets/vegan_start.png"
+    description: "Starte die 30-Tage Veganstart-Challenge"
+    dub: null
+    sub: null
+    keywords: []
+
   - title: "Vegan werden"
     url: "https://www.youtube.com/watch?v=iACH3ubDynA"
     image_url: "/assets/lisa_sophie_laurent.jpg"
