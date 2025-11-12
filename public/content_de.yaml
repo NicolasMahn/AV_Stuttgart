@@ -45,7 +45,6 @@ Ethik:
 #    dub: null
 #    sub: null
 #    description: null
-#    keywords: []
 
   - title: "Lebenshof Wenzendorf"
     url: "https://www.youtube.com/watch?v=vhZ6sIUCKy0"
@@ -59,8 +58,8 @@ Ethik:
     thumbnail_url: "/assets/zwangs_bschwaengerung.png"
     url: "https://www.youtube.com/watch?v=i6ju10aVAto"
     image_url: "/assets/käse.webp"
-    dub: "en"
-    sub: "de"
+    dub: null
+    sub: null
 
   - title: "\"Norm\" - Kurzfilm"
     url: "https://www.youtube.com/watch?v=poxl0K9UrP0&hl=de&cc_lang_pref=de&cc_load_policy=1"
@@ -131,7 +130,7 @@ Ernährung:
     dub: null
     sub: null
 
-  - title: "Veganer Multinährstoff"
+  - title: "Veganer Multinährstoff" #TODO: Link Broken
     description: "Hochwertiges Nahrungsergänzungsmittel mit allen wichtigen Vitaminen und Mineralstoffen für eine vegane Ernährung - entwickelt von Watson Nutrition."
     url: "https://watsonnutrition.de/produkt/proveg-essentials/"
     image_url: "/assets/pro_veg.png"
