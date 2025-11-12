@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTab } from './TabContext'
-import { Link, useLocation } from 'react-router-dom';
 
 import './Menu.css';
 
@@ -8,13 +7,48 @@ const Menu = ({routes, language, toggleLanguage }) => {
 
   const tabs = routes;
   const [currentTab, setCurrentTab] = useTab();
-  const location = useLocation();
   const menuRef = useRef(null);
+  const tabRefs = useRef({});
   const [showLeftGradient, setShowLeftGradient] = useState(false);
   const [showRightGradient, setShowRightGradient] = useState(true);
   const [logo, setLogo] = useState('/assets/AV_Logo_Text_Querformat_weiss.svg'); // State to manage the logo
   const [displayLogo, setDisplayLogo] = useState(true); // State to manage whether to display the logo
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768); // State to check if device is desktop
+
+  // Function to scroll to a section
+  const scrollToSection = (sectionKey) => {
+    const element = document.getElementById(sectionKey);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Update URL hash
+      window.history.pushState(null, '', `#${sectionKey}`);
+    }
+  };
+
+  // Scroll active tab into view when currentTab changes
+  useEffect(() => {
+    const activeRoute = routes.find(route => route.name === currentTab);
+    if (activeRoute && tabRefs.current[activeRoute.key] && menuRef.current) {
+      const tabElement = tabRefs.current[activeRoute.key];
+      const menuElement = menuRef.current;
+      
+      // Calculate if tab is out of view
+      const tabLeft = tabElement.offsetLeft;
+      const tabRight = tabLeft + tabElement.offsetWidth;
+      const menuScrollLeft = menuElement.scrollLeft;
+      const menuWidth = menuElement.clientWidth;
+      const menuScrollRight = menuScrollLeft + menuWidth;
+      
+      // Scroll the tab into view if it's not fully visible
+      if (tabLeft < menuScrollLeft + 20) {
+        // Tab is cut off on the left
+        menuElement.scrollTo({ left: tabLeft - 50, behavior: 'smooth' });
+      } else if (tabRight > menuScrollRight - 20) {
+        // Tab is cut off on the right
+        menuElement.scrollTo({ left: tabRight - menuWidth + 50, behavior: 'smooth' });
+      }
+    }
+  }, [currentTab, routes]);
 
   const handleResize = () => {
     updateDeviceType(); // Updates if the device is a desktop or not
@@ -97,27 +131,29 @@ const Menu = ({routes, language, toggleLanguage }) => {
     }
   }, [menuRef.current]);
 
-  useEffect(() => {
-    const path = location.pathname;
-    const foundTab = routes.find(tab => tab.path === path);
-    setCurrentTab(foundTab ? foundTab.name : "");
-  }, [location, routes, setCurrentTab]);
-
   return (
     <nav className="menu">    
       <div className="menu-header">
         {displayLogo && <img src={logo} alt="Logo" className="menu-logo" />}
-        <div className="current-tab">{currentTab}</div>
-        {/*<button onClick={toggleLanguage} className="language-toggle">
-          Switch to {language === 'de' ? 'EN' : 'DE'}
-        </button>*/}
+        <button onClick={toggleLanguage} className="language-toggle" aria-label="Switch language">
+          <img 
+            src={language === 'de' ? '/assets/Flag_EN.svg' : '/assets/Flag_DE.svg'} 
+            alt={language === 'de' ? 'Switch to English' : 'Switch to German'} 
+            className="language-flag"
+          />
+        </button>
       </div>
       <div className="menu-tabs" ref={menuRef}>
         &emsp;
         {tabs.map(tab => (
-          <Link key={tab.name} to={tab.path} className={`tab-item ${currentTab === tab.name ? 'active' : ''}`}>
+          <button 
+            key={tab.key}
+            ref={(el) => (tabRefs.current[tab.key] = el)}
+            onClick={() => scrollToSection(tab.key)} 
+            className={`tab-item ${currentTab === tab.name ? 'active' : ''}`}
+          >
             {tab.name}
-          </Link>
+          </button>
         ))}
         &ensp;
       </div>

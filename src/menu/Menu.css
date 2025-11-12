@@ -1,26 +1,20 @@
 .menu {
+    position: sticky;
+    top: 0;
     background-color: black; 
     color: white;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    padding-bottom: 10px;
   }
   
   .menu-header {
-    position: relative; /* Relative positioning for the container */
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 500;
-    font-size: 30px;
     padding: 10px;
     height: 60px;
-  }
-
-  
-  .current-tab {
-    position: absolute; /* Absolute positioning for the title */
-    left: 50%; /* Center the title */
-    transform: translateX(-50%); 
-    /* Ensure the title doesn't overlap the logo */
-    padding-left: 17px; 
   }
   
   .menu-tabs {
@@ -80,6 +74,12 @@
     font-size: 20px;
     border: 2px solid white;
     border-radius: 100px; /* Rounded corners */
+    font-family: inherit;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .tab-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
   
   .tab-item.active {
@@ -88,11 +88,9 @@
   }
     
   .menu-logo {
-    position: absolute; /* Absolute positioning for the logo */
-    left: 10px; 
-    margin-top: 10px;
     width: 210px; 
     height: auto;
+    margin-left: 10px;
   }
   
   @media (max-width: 800px) {
@@ -138,5 +136,45 @@
 
   .language-toggle {
     position: absolute;
-    right: 0
+    right: calc(50% - 300px);
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    transition: transform 0.2s ease, opacity 0.8s ease;
   }
+
+  .language-toggle:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  .language-flag {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  @media (max-width: 768px) {
+    .language-toggle {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+@media (max-width: 500px) {
+  .language-toggle {
+    right: 30px;
+  }
+}
+
+

@@ -23,3 +23,11 @@ a {
   text-decoration: none; /* Remove underline */
   -webkit-tap-highlight-color: transparent; /* Makes tap highlight color transparent */
 }
+
+.link-items-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px 10px;
+}
