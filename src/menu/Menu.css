@@ -99,11 +99,18 @@
     }
   }
 
-  
-  @media (max-width: 768px) {
+  @media (max-width: 400px) {
+    .menu-logo {
+      position: absolute;
+      left: 20px; 
+    }
+  }
 
+  @media (max-width: 300px) {
     .menu-logo {
       width: 65px; /* Smaller size for smaller screens */
+      position: absolute;
+      left: 20px; 
     }
   }
 
@@ -166,15 +173,7 @@
 
   @media (max-width: 768px) {
     .language-toggle {
-      width: 35px;
-      height: 35px;
+      right: 20px;
     }
   }
-
-@media (max-width: 500px) {
-  .language-toggle {
-    right: 30px;
-  }
-}
-
 

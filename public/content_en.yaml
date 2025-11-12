@@ -13,15 +13,23 @@ _config:
 Ethics:
   - title: "Dominion (2018)"
     url: "https://www.youtube.com/watch?v=LQRAfJyEsko"
+    description: "Comprehensive documentary about the animal industry worldwide - from factory farming through slaughterhouses to leather production."
     image_url: "/assets/dominion.jpg"
     dub: null
     sub: null
-    description: null
 
   - title: "An eye-opening speech!"
     description: "A stirring speech heard by thousands of students in universities across the UK."
     url: "https://www.youtube.com/watch?v=Z3u7hXpOm58"
     image_url: "/assets/earthling_ed.jpg"
+    dub: null
+    sub: null
+
+  - title: "UK Pig Farming - Undercover Investigation"
+    description: "Revealing footage from inside UK pig farms showing the reality of modern animal agriculture"
+    url: "https://www.youtube.com/watch?v=CicwG2xcfqU"
+    thumbnail_url: "/assets/uk_pig_farm.png"
+    image_url: "/assets/joey_carbstrong.jpg"
     dub: null
     sub: null
 
@@ -53,18 +61,13 @@ Ethics:
     dub: null
     sub: null
 
-  - title: "The secret reason why we eat meat"
-    url: "https://www.youtube.com/watch?v=ao2GL3NAWQU"
-    image_url: "/assets/beyond_carnism.jpg"
-    dub: null
-    sub: null
-
-#  - title: "A POWERFUL Speech That All Of Humanity MUST SEE"
-#    description: "Joey Carbstrong at Oxford Union"
-#    url: "https://www.youtube.com/watch?v=4XDVGgZijLA"
-#    image_url: "/assets/joey_carbstrong.jpg"
-#    dub: "en"
+#  - title: "The secret reason why we eat meat"
+#    url: "https://www.youtube.com/watch?v=ao2GL3NAWQU"
+#    image_url: "/assets/beyond_carnism.jpg"
+#    dub: null
 #    sub: null
+
+
 
 How to go vegan:
 

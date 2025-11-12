@@ -64,12 +64,12 @@ const Menu = ({routes, language, toggleLanguage }) => {
   const updateLogoAndDisplay = () => {
     const width = window.innerWidth;
     // Set logo visibility
-    if (width < 300) {
+    if (width < 150) {
       setDisplayLogo(false);
     } else {
       setDisplayLogo(true);
       // Set which logo to display
-      if (width < 768) {
+      if (width < 300) {
         setLogo('/assets/AV_Logo_weiss.svg');
       } else {
         setLogo('/assets/AV_Logo_Text_Querformat_weiss.svg');
