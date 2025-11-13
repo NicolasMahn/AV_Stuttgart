@@ -3,6 +3,11 @@ import { useTab } from './menu/TabContext';
 import GenericPage from './GenericPage';
 import './ScrollContainer.css';
 
+// Utility function to normalize hash names (replace spaces with underscores)
+const normalizeHash = (hash) => {
+  return hash.replace(/\s+/g, '_');
+};
+
 const ScrollContainer = ({ routes, fileName }) => {
   const [currentTab, setCurrentTab] = useTab();
   const sectionRefs = useRef({});
@@ -20,10 +25,10 @@ const ScrollContainer = ({ routes, fileName }) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const sectionId = entry.target.id;
-          const route = routes.find(r => r.key === sectionId);
+          const route = routes.find(r => normalizeHash(r.key) === sectionId);
           if (route) {
             setCurrentTab(route.name);
-            // Update URL hash without triggering navigation
+            // Update URL hash without triggering navigation (already normalized)
             window.history.replaceState(null, '', `#${sectionId}`);
           }
         }
@@ -39,9 +44,10 @@ const ScrollContainer = ({ routes, fileName }) => {
 
     // Handle direct URL access to specific sections
     const hash = window.location.hash.slice(1);
-    if (hash && sectionRefs.current[hash]) {
+    const normalizedHash = normalizeHash(hash);
+    if (normalizedHash && sectionRefs.current[normalizedHash]) {
       setTimeout(() => {
-        sectionRefs.current[hash].scrollIntoView({ behavior: 'smooth' });
+        sectionRefs.current[normalizedHash].scrollIntoView({ behavior: 'smooth' });
       }, 100);
     }
 
@@ -54,24 +60,27 @@ const ScrollContainer = ({ routes, fileName }) => {
 
   return (
     <div className="scroll-container">
-      {routes.map((route, index) => (
-        <React.Fragment key={route.key}>
-          {(
-            <div className="section-divider">
-              <div className="divider-line"></div>
-              <div className="divider-text">{route.name}</div>
-              <div className="divider-line"></div>
-            </div>
-          )}
-          <section
-            id={route.key}
-            ref={(el) => (sectionRefs.current[route.key] = el)}
-            className="scroll-section"
-          >
-            <GenericPage category={route.key} fileName={fileName} />
-          </section>
-        </React.Fragment>
-      ))}
+      {routes.map((route, index) => {
+        const normalizedKey = normalizeHash(route.key);
+        return (
+          <React.Fragment key={route.key}>
+            {(
+              <div className="section-divider">
+                <div className="divider-line"></div>
+                <div className="divider-text">{route.name}</div>
+                <div className="divider-line"></div>
+              </div>
+            )}
+            <section
+              id={normalizedKey}
+              ref={(el) => (sectionRefs.current[normalizedKey] = el)}
+              className="scroll-section"
+            >
+              <GenericPage category={route.key} fileName={fileName} />
+            </section>
+          </React.Fragment>
+        );
+      })}
     </div>
   );
 };

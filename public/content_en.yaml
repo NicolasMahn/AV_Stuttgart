@@ -75,7 +75,7 @@ How to go vegan:
     description: "A 22-day vegan challenge to help you transition to a plant-based diet."
     url: "https://challenge22.com/"
     thumbnail_url: "/assets/challenge22.png"
-    #image_url: "/assets/how_to_go_vegan.png"
+    image_url: "/assets/challange22_logo.png"
     dub: null
     sub: null
 

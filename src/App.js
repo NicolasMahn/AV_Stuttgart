@@ -14,6 +14,11 @@ import Kontakt from './Kontakt';
 import './App.css';
 import { TabProvider } from './menu/TabContext';
 
+// Utility function to normalize hash names (replace spaces with underscores)
+const normalizeHash = (hash) => {
+  return hash.replace(/\s+/g, '_');
+};
+
 function AppContent({ language, setLanguage }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,6 +29,26 @@ function AppContent({ language, setLanguage }) {
 
   const fileNameDE = "/content_de.yaml"
   const fileNameEN = "/content_en.yaml"
+
+  // Preserve hash during language-based routing
+  useEffect(() => {
+    const rawHash = window.location.hash;
+    // Normalize hash (replace spaces with underscores)
+    const normalizedHash = rawHash ? '#' + normalizeHash(rawHash.slice(1)) : '';
+    const currentPath = location.pathname;
+    const isSpecialPage = ['/datenschutz', '/impressum', '/spenden', '/kontakt', '/karte'].includes(currentPath);
+    
+    // Don't redirect special pages
+    if (isSpecialPage) return;
+    
+    // Check if we need to redirect based on language
+    const expectedPath = language === 'de' ? '/' : '/en/';
+    const needsRedirect = currentPath !== expectedPath && currentPath !== '/datenschutz' && currentPath !== '/impressum' && currentPath !== '/spenden' && currentPath !== '/kontakt';
+    
+    if (needsRedirect) {
+      navigate(expectedPath + normalizedHash, { replace: true });
+    }
+  }, [language, location.pathname, navigate]);
 
   // Load menu configuration from YAML files
   useEffect(() => {
@@ -66,9 +91,10 @@ function AppContent({ language, setLanguage }) {
     setLanguage(newLanguage);
 
     // Navigate to the base path for the new language, preserving hash if present
-    const hash = window.location.hash;
+    const rawHash = window.location.hash;
+    const normalizedHash = rawHash ? '#' + normalizeHash(rawHash.slice(1)) : '';
     const newPath = newLanguage === 'en' ? '/en/' : '/';
-    navigate(newPath + hash);
+    navigate(newPath + normalizedHash);
   };
 
   if (loading) {
@@ -99,16 +125,13 @@ function AppContent({ language, setLanguage }) {
           <Menu routes={currentRoutes} language={language} toggleLanguage={toggleLanguage} />
         )}
         <Routes>
-          <Route 
-            path={language === 'de' ? '/' : '/en/'} 
-            element={<ScrollContainer routes={currentRoutes} fileName={currentFileName} />} 
-          />
+          <Route path="/" element={<ScrollContainer routes={currentRoutes} fileName={currentFileName} />} />
+          <Route path="/en/" element={<ScrollContainer routes={currentRoutes} fileName={currentFileName} />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/spenden" element={<Spenden />} />
           <Route path="/kontakt" element={<Kontakt />} />
-          <Route path="/karte" element={<Navigate to="/" />} />
-          <Route path="*" element={<Navigate to={language === 'de' ? '/' : '/en/'} />} />
+          <Route path="*" element={<ScrollContainer routes={currentRoutes} fileName={currentFileName} />} />
         </Routes>
       </Layout>
     </TabProvider>
@@ -116,15 +139,14 @@ function AppContent({ language, setLanguage }) {
 }
 
 function App() {
-  // Initialize language from localStorage or browser language
+  // Initialize language from localStorage or default to German
   const [language, setLanguage] = useState(() => {
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage) {
       return savedLanguage;
     }
-    // Fallback to browser language detection
-    const browserLang = navigator.language.toLowerCase();
-    return browserLang.startsWith('de') ? 'de' : 'en';
+    // Always default to German
+    return 'de';
   });
 
   return (

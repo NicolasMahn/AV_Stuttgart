@@ -3,6 +3,11 @@ import { useTab } from './TabContext'
 
 import './Menu.css';
 
+// Utility function to normalize hash names (replace spaces with underscores)
+const normalizeHash = (hash) => {
+  return hash.replace(/\s+/g, '_');
+};
+
 const Menu = ({routes, language, toggleLanguage }) => {
 
   const tabs = routes;
@@ -17,11 +22,12 @@ const Menu = ({routes, language, toggleLanguage }) => {
 
   // Function to scroll to a section
   const scrollToSection = (sectionKey) => {
-    const element = document.getElementById(sectionKey);
+    const normalizedKey = normalizeHash(sectionKey);
+    const element = document.getElementById(normalizedKey);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Update URL hash
-      window.history.pushState(null, '', `#${sectionKey}`);
+      // Update URL hash with normalized version
+      window.history.pushState(null, '', `#${normalizedKey}`);
     }
   };
 
