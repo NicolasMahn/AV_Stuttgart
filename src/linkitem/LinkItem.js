@@ -22,7 +22,7 @@ const LinkItem = ({ title, url, image, thumbnail, description, dub, sub, appStor
   if (hasThumbnail) {
     return (
       <a href={finalUrl} target="_blank" rel="noopener noreferrer">
-        <div className="link-item-instagram">
+        <div className="link-card link-item-instagram">
           <div className="instagram-thumbnail">
             <img src={thumbnail} alt={title} className="thumbnail-image" />
           </div>
@@ -54,7 +54,7 @@ const LinkItem = ({ title, url, image, thumbnail, description, dub, sub, appStor
   // Standard horizontal layout
   return (
     <a href={finalUrl} target="_blank" rel="noopener noreferrer">
-        <div className="link-item">
+        <div className="link-card link-item">
             <div className="link-image-container">
                 {hasImage ? (
                     <img src={image} alt={title} className="link-image" />

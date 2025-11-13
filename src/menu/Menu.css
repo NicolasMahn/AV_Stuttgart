@@ -7,6 +7,12 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     padding-bottom: 10px;
   }
+
+  @media (max-width: 600px) {
+    .menu {
+      padding-bottom: 6px;
+    }
+  }
   
   .menu-header {
     position: relative;
@@ -15,6 +21,13 @@
     justify-content: center;
     padding: 10px;
     height: 60px;
+  }
+
+  @media (max-width: 600px) {
+    .menu-header {
+      height: 52px;
+      padding: 6px 12px;
+    }
   }
   
   .menu-tabs {
@@ -78,6 +91,21 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
+  @media (max-width: 600px) {
+    .tab-item {
+      font-size: 17px;
+      padding: 8px 14px;
+      border-width: 1.5px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .tab-item {
+      font-size: 15px;
+      padding: 8px 12px;
+    }
+  }
+
   .tab-item:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
@@ -92,6 +120,12 @@
     height: auto;
     margin-left: 10px;
   }
+
+  @media (max-width: 600px) {
+    .menu-logo {
+      width: 180px;
+    }
+  }
   
   @media (max-width: 800px) {
     .menu-tabs {
@@ -101,6 +135,7 @@
 
   @media (max-width: 400px) {
     .menu-logo {
+      width: 160px;
       position: absolute;
       left: 20px; 
     }
@@ -156,6 +191,14 @@
     height: 40px;
     overflow: hidden;
     transition: transform 0.2s ease, opacity 0.8s ease;
+  }
+
+  @media (max-width: 600px) {
+    .language-toggle {
+      width: 36px;
+      height: 36px;
+      border-width: 1.5px;
+    }
   }
 
   .language-toggle:hover {
