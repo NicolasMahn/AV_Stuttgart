@@ -14,35 +14,35 @@ Ethics:
   - title: "Dominion (2018)"
     url: "https://www.youtube.com/watch?v=LQRAfJyEsko"
     description: "Comprehensive documentary about the animal industry worldwide - from factory farming through slaughterhouses to leather production."
-    image_url: "/assets/dominion.jpg"
+    image_url: "/assets/dominion.webp"
     dub: null
     sub: null
 
   - title: "An eye-opening speech!"
     description: "A stirring speech heard by thousands of students in universities across the UK."
     url: "https://www.youtube.com/watch?v=Z3u7hXpOm58"
-    image_url: "/assets/earthling_ed.jpg"
+    image_url: "/assets/earthling_ed.webp"
     dub: null
     sub: null
 
   - title: "UK Pig Farming - Undercover Investigation"
     description: "Revealing footage from inside UK pig farms showing the reality of modern animal agriculture"
     url: "https://www.youtube.com/watch?v=CicwG2xcfqU"
-    thumbnail_url: "/assets/uk_pig_farm.png"
-    image_url: "/assets/joey_carbstrong.jpg"
+    thumbnail_url: "/assets/uk_pig_farm.webp"
+    image_url: "/assets/joey_carbstrong.webp"
     dub: null
     sub: null
 
   - title: "A Heartwarming Sanctuary"
     description: "Rescued animals at a sanctuary - this is what life should look like."
-    thumbnail_url: "/assets/sanctuary_thumbnail.png"
+    thumbnail_url: "/assets/sanctuary_thumbnail.webp"
     url: "https://www.youtube.com/watch?v=A1WF21N0m8k"
     image_url: "/assets/retreat.webp"
     dub: null
     sub: null
 
   - title: "Why aren't vegans just vegetarian?"
-    thumbnail_url: "/assets/nicht_veggie.png"
+    thumbnail_url: "/assets/nicht_veggie.webp"
     url: "https://www.youtube.com/watch?v=pUsqS1k8Bu0"
     image_url: "/assets/käse.webp"
     dub: null
@@ -51,7 +51,7 @@ Ethics:
   - title: "\"Norm\" - Shortfilm"
     url: "https://www.youtube.com/watch?v=poxl0K9UrP0"
     description: "\"Norm\" is a short film about two roommates talking about the morality of rape in a society where it is legal and socially acceptable to rape women. #itsnotaboutrape (it's not about rape)"
-    image_url: "/assets/norm.jpg"
+    image_url: "/assets/norm.webp"
     dub: null
     sub: null
 
@@ -74,8 +74,8 @@ How to go vegan:
   - title: "Challenge 22 - Start Your Vegan Journey Today!"
     description: "A 22-day vegan challenge to help you transition to a plant-based diet."
     url: "https://challenge22.com/"
-    thumbnail_url: "/assets/challenge22.png"
-    image_url: "/assets/challange22_logo.png"
+    thumbnail_url: "/assets/challenge22.webp"
+    image_url: "/assets/challange22_logo.webp"
     dub: null
     sub: null
 
@@ -83,14 +83,14 @@ How to go vegan:
     description: "An app to find vegan restaurants"
     url: "https://play.google.com/store/apps/details?id=com.hcceg.veg.compassionfree&hl=en&gl=US"
     app_store_url: "https://apps.apple.com/app/happycow-find-vegan-food/id435871950"
-    image_url: "/assets/happy_cow.png"
-    thumbnail_url: "/assets/happy_cow_screenshot.png"
+    image_url: "/assets/happy_cow.webp"
+    thumbnail_url: "/assets/happy_cow_screenshot.webp"
     dub: null
     sub: null
 
   - title: "Go Vegan in 5 Simple Steps"
     url: "https://www.youtube.com/watch?v=1YnJqoPmR8s&t=22s"
-    image_url: "/assets/how_to_go_vegan.png"
+    image_url: "/assets/how_to_go_vegan.webp"
     description: "A practical guide to making the transition easy and sustainable"
     dub: null
     sub: null
@@ -100,6 +100,6 @@ Nutrition:
   - title: "Vegan Multivitamin"
     description: "by Watson Nutrition"
     url: "https://watsonnutrition.de/produkt/proveg-essentials/"
-    image_url: "/assets/pro_veg.png"
+    image_url: "/assets/pro_veg.webp"
     dub: null
     sub: null

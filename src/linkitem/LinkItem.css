@@ -1,98 +1,49 @@
 .link-item {
     display: flex;
-    margin: 10px auto; /* Centering each item and adding margin */
-    padding: 15px;
+    gap: 15px;
+    margin: 10px auto;
+    padding: 10px;
     background-color: #333333; 
     color: white;
-    border-radius: 10px; /* Rounded corners */
-    width: 500px; /* Consistent width for all items */
-  }
-
-  .link-image-container {
-    width: 100px; /* Same width as the image */
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .link-image-spacer {
-    width: 100px;
-    margin-right: 15px;
+    border-radius: 8px;
+    width: 500px;
   }
   
   .link-image {
-    align-self: left;
+    flex-shrink: 0;
     width: 100px; 
     height: 100px; 
-    margin-right: 15px; /* Space between image and text */
-    object-fit: cover; /* Ensure image covers the area nicely */
-    border-radius: 5px;
+    object-fit: cover;
+    border-radius: 8px;
   }
   
   .link-content {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align text to the start */
-    /*justify-content: space-between; /* Spread out the children */
-    width: 100%; /* Take full width to align children properly */
-  }
-
-  .language-container {
-    margin-top: auto; /* Pushes the language to the bottom */
-    width: 100%;
+    min-width: 0;
   }
 
   .language-image {
-    height: 10px
+    height: 10px;
   }
   
   .link-title {
     font-size: 18px;
-    text-align: left;
-    font-style: bolder;
-    margin-bottom: 10px; /* Pushes everything else down */
+    font-weight: bold;
+    margin-bottom: 5px;
   }
   
   .link-description {
-    font-size: 14px;
-    text-align: left; /* Align text to the left */
-    margin-top: auto; /* Stays at the bottom */
+    font-size: 13px;
+    text-align: left;
+    font-family: Inter, sans-serif;
+    margin: 0;
   }
 
   .link-language {
     font-size: 14px;
-    text-align: left; /* Align text to the left */
-  }
-
-  @media (max-width: 600px) {
-    .link-item {
-      width: 400px;
-    }  
-  }
-
-  @media (max-width: 500px) {
-    .link-item {
-      width: 350px;
-    }  
-  }
-
-  @media (max-width: 400px) {
-    .link-item {
-      width: 300px;
-    } 
-  }
-
-  @media (max-width: 350px) {
-    .link-item {
-      width: 250px;
-    } 
-  }
-
-  @media (max-width: 280px) {
-    .link-item {
-      width: 200px;
-    } 
+    margin-top: auto;
   }
 
   /* Instagram-style layout */
@@ -100,10 +51,10 @@
     display: flex;
     flex-direction: column;
     margin: 10px auto;
-    padding: 15px;
+    padding: 10px;
     background-color: #333333;
     color: white;
-    border-radius: 10px;
+    border-radius: 8px;
     width: 500px;
   }
 
@@ -133,7 +84,7 @@
     flex-shrink: 0;
     width: 60px;
     height: 60px;
-    border-radius: 5px;
+    border-radius: 8px;
     overflow: hidden;
   }
 
@@ -151,9 +102,12 @@
     min-width: 0;
   }
 
+
+/* Media Queries */
   @media (max-width: 600px) {
+    .link-item,
     .link-item-instagram {
-      width: 400px;
+      width: 450px;
     }
 
     .instagram-thumbnail {
@@ -162,8 +116,9 @@
   }
 
   @media (max-width: 500px) {
+    .link-item,
     .link-item-instagram {
-      width: 350px;
+      width: 400px;
     }
 
     .instagram-thumbnail {
@@ -176,9 +131,10 @@
     }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 420px) {
+    .link-item,
     .link-item-instagram {
-      width: 300px;
+      width: 350px;
     }
 
     .instagram-thumbnail {
@@ -186,9 +142,10 @@
     }
   }
 
-  @media (max-width: 350px) {
+  @media (max-width: 370px) {
+    .link-item,
     .link-item-instagram {
-      width: 250px;
+      width: 300px;
     }
 
     .instagram-thumbnail {
@@ -201,7 +158,8 @@
     }
   }
 
-  @media (max-width: 280px) {
+  @media (max-width: 320px) {
+    .link-item,
     .link-item-instagram {
       width: 200px;
     }

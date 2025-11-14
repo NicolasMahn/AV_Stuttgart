@@ -19,7 +19,7 @@ _config:
 Ethik:
   - title: "Dominion (2018)"
     url: "https://www.youtube.com/watch?v=V7DrljVAaYk"
-    image_url: "/assets/dominion.jpg"
+    image_url: "/assets/dominion.webp"
     dub: null
     sub: null
     description: "Umfassende Dokumentation über die Tierindustrie weltweit - von Massentierhaltung über Schlachthöfe bis zur Lederproduktion."  
@@ -27,14 +27,14 @@ Ethik:
   - title: "Eine Rede, die dir die Augen öffnet!"
     description: "Eine aufrüttelnde Rede, die Tausende von Studenten in Universitäten überall in Großbritannien hörten."
     url: "https://www.youtube.com/watch?v=Z3u7hXpOm58&hl=de&cc_lang_pref=de&cc_load_policy=1"
-    image_url: "/assets/earthling_ed.jpg"
+    image_url: "/assets/earthling_ed.webp"
     dub: "en"
     sub: "de"
 
   - title: "Das ist Bio!"
     url: "https://www.soko-tierschutz.org/bio"
-    image_url: "/assets/soko.png"
-    thumbnail_url: "/assets/bio_soko_tierschutz.png"
+    image_url: "/assets/soko.webp"
+    thumbnail_url: "/assets/bio_soko_tierschutz.webp"
     dub: null
     sub: null
     description: "Undercover-Recherchen zeigen die Realität hinter Bio-Siegeln in Deutschland."
@@ -48,15 +48,15 @@ Ethik:
 
   - title: "Lebenshof Wenzendorf"
     url: "https://www.youtube.com/watch?v=vhZ6sIUCKy0"
-    thumbnail_url: "/assets/lebenshof_screenshot.png"
-    image_url: "/assets/pikayzo.png"  # oder neues Bild?
+    thumbnail_url: "/assets/lebenshof_screenshot.webp"
+    image_url: "/assets/pikayzo.webp"
     dub: null
     sub: null
     description: "Gerettete Tiere auf einem Lebenshof - so sollte das Leben aussehen."
 
   - title: "Warum sind Veganer nicht einfach Vegetarier?"
-    description: "Ein wichtiger Blick auf die Milchindustrie und warum Vegetarismus nicht ausreicht"
-    thumbnail_url: "/assets/zwangs_bschwaengerung.png"
+    description: "Ein wichtiger Blick auf die Milchindustrie und warum Vegetarismus nicht ausreicht."
+    thumbnail_url: "/assets/zwangs_bschwaengerung.webp"
     url: "https://www.youtube.com/watch?v=i6ju10aVAto"
     image_url: "/assets/käse.webp"
     dub: null
@@ -65,7 +65,7 @@ Ethik:
   - title: "\"Norm\" - Kurzfilm"
     url: "https://www.youtube.com/watch?v=poxl0K9UrP0&hl=de&cc_lang_pref=de&cc_load_policy=1"
     description: "Kurzfilm über Doppelmoral in der Gesellschaft. Der Film nutzt eine Analogie, um ethische Inkonsistenzen aufzuzeigen."
-    image_url: "/assets/norm.jpg"
+    image_url: "/assets/norm.webp"
     dub: "en"
     sub: "de"
 
@@ -92,24 +92,24 @@ Starthilfe:
   - title: "Vegan Start"
     url: "https://play.google.com/store/search?q=veganstart&c=apps"
     app_store_url: "https://apps.apple.com/de/app/veganstart-vegane-rezepte/id1255961503"
-    image_url: "/assets/vegan_start.png"
-    thumbnail_url: "/assets/vegan_start_big.png"
-    description: "Starte die 30-Tage Veganstart-Challenge"
+    image_url: "/assets/vegan_start.webp"
+    thumbnail_url: "/assets/vegan_start_big.webp"
+    description: "Starte die 30-Tage Veganstart-Challenge."
     dub: null
     sub: null
 
   - title: "Happy Cow"
-    description: "Eine App um vegane Restaurants zu finden"
+    description: "Eine App um vegane Restaurants zu finden."
     url: "https://play.google.com/store/apps/details?id=com.hcceg.veg.compassionfree&hl=de&gl=US"
     app_store_url: "https://apps.apple.com/app/happycow-find-vegan-food/id435871950"
-    image_url: "/assets/happy_cow.png"
-    thumbnail_url: "/assets/happy_cow_screenshot.png"
+    image_url: "/assets/happy_cow.webp"
+    thumbnail_url: "/assets/happy_cow_screenshot.webp"
     dub: null
     sub: null
 
   - title: "Vegan werden - 10 Tipps für Anfänger"
     url: "https://www.youtube.com/watch?v=iACH3ubDynA"
-    image_url: "/assets/lisa_sophie_laurent.jpg"
+    image_url: "/assets/lisa_sophie_laurent.webp"
     description: "Praktische Tipps für Vegan-Einsteiger - einfach erklärt und alltagsnah."
     dub: null
     sub: null
@@ -127,20 +127,20 @@ Ernährung:
   - title: "Optimal vegan ernährt - wir zeigen dir, wie's geht"
     description: "Prof. Markus Keller erklärt die Gießener vegane Lebensmittelpyramide - wissenschaftsbasierte Empfehlungen für eine optimale pflanzliche Ernährung."
     url: "https://www.youtube.com/watch?v=urCNiqlUJDE"
-    image_url: "/assets/markus_keller.jpg"
+    image_url: "/assets/markus_keller.webp"
     dub: null
     sub: null
 
   - title: "Veganer Multinährstoff" #TODO: Link Broken
     description: "Hochwertiges Nahrungsergänzungsmittel mit allen wichtigen Vitaminen und Mineralstoffen für eine vegane Ernährung - entwickelt von Watson Nutrition."
     url: "https://watsonnutrition.de/produkt/proveg-essentials/"
-    image_url: "/assets/pro_veg.png"
+    image_url: "/assets/pro_veg.webp"
     dub: null
     sub: null
 
   - title: "Get Better - Ernährung"
     url: "https://get-better.me/ernaehrung/"
-    image_url: "/assets/get_better.png"
+    image_url: "/assets/get_better.webp"
     description: "Fundierte Artikel über vegane Ernährung, Nährstoffe und gesunde Lebensweise - wissenschaftlich aufbereitet."
     dub: null
     sub: null
@@ -149,8 +149,8 @@ Ernährung:
 Rezepte:  
   - title: "Vegane Spinatknödel mit \"Käsesauce\""
     url: "https://www.eat-this.org/vegane-spinatknoedel-mit-kaesesauce/"
-    image_url: "/assets/eat-this.png"
-    thumbnail_url: "/assets/eat_this_vegane_spinatknoedel_mit_kaesesauce.png"
+    image_url: "/assets/eat-this.webp"
+    thumbnail_url: "/assets/eat_this_vegane_spinatknoedel_mit_kaesesauce.webp"
     dub: null
     sub: null
   
@@ -170,36 +170,36 @@ Rezepte:
 
   - title: "Vegane Quarkbällchen"
     url: "https://www.eat-this.org/vegane-quarkbaellchen/"
-    thumbnail_url: "/assets/eat_this_vegane_quarkbaellchen.png"
-    image_url: "/assets/eat-this.png"
+    thumbnail_url: "/assets/eat_this_vegane_quarkbaellchen.webp"
+    image_url: "/assets/eat-this.webp"
     dub: null
     sub: null
 
 Weitere Informationen:
   - title: "darumpflanzlich"
     url: "https://www.instagram.com/darumpflanzlich/?hl=de"
-    image_url: "/assets/darumpflanzlich.jpg"
+    image_url: "/assets/darumpflanzlich.webp"
     description: "Instagram-Account mit Argumenten und Fakten für eine pflanzliche Lebensweise"
     dub: null
     sub: null
 
   - title: "yammibean"
     url: "https://www.instagram.com/yammibean/"
-    image_url: "/assets/yammibean.jpg"
+    image_url: "/assets/yammibean.webp"
     description: "Vegane Rezepte und Food-Inspiration auf Instagram"
     dub: null
     sub: null
 
   - title: "vegansparen"
     url: "https://www.instagram.com/vegansparen/?hl=de"
-    image_url: "/assets/vegansparen.jpg"
+    image_url: "/assets/vegansparen.webp"
     description: "Tipps für veganes Leben mit kleinem Budget - Sonderangebote und Schnäppchen"
     dub: null
     sub: null
 
   - title: "vegan_check"
     url: "https://www.instagram.com/vegan_check/?hl=de"
-    image_url: "/assets/vegancheck.jpg"
+    image_url: "/assets/vegancheck.webp"
     description: "Produktchecks und Infos über vegane Produkte im deutschen Handel"
     dub: null
     sub: null

@@ -51,31 +51,40 @@ const LinkItem = ({ title, url, image, thumbnail, description, dub, sub, appStor
     );
   }
 
+  // Render language info helper
+  const renderLanguage = () => {
+    if (!dub && !sub) return null;
+    
+    return (
+      <div className="link-language">
+        {dub && (
+          <>
+            Dub&ensp;<img src={getFlagUrl(dub)} alt={dub} className="language-image"/>
+          </>
+        )}
+        {dub && sub && ' | '}
+        {sub && (
+          <>
+            Sub&ensp;<img src={getFlagUrl(sub)} alt={sub} className="language-image"/>
+          </>
+        )}
+      </div>
+    );
+  };
+
   // Standard horizontal layout
   return (
     <a href={finalUrl} target="_blank" rel="noopener noreferrer">
-        <div className="link-card link-item">
-            <div className="link-image-container">
-                {hasImage ? (
-                    <img src={image} alt={title} className="link-image" />
-                ) : (
-                    <div className="link-image-spacer"></div>
-                )}
-            </div>
-            <div className="link-content">
-                <div className="link-title">{title}</div>
-                {description && <p className="link-description">{description}</p>}
-                <div className="language-container">
-                    {dub && sub && 
-                    <div className="link-language">Dub&ensp;
-                        <img src={getFlagUrl(dub)} alt={dub} className="language-image"/> | Sub&ensp; 
-                        <img src={getFlagUrl(sub)} alt={sub} className="language-image"/>
-                    </div>}
-                    {dub && !sub && <div className="link-language">Dub&ensp;<img src={getFlagUrl(dub)} alt={dub} className="language-image"/></div>}
-                    {!dub && sub && <div className="link-language">Sub&ensp;<img src={getFlagUrl(sub)} alt={sub} className="language-image"/></div>}
-                </div>
-            </div>
+      <div className="link-card link-item">
+        {hasImage && (
+          <img src={image} alt={title} className="link-image" />
+        )}
+        <div className="link-content">
+          <div className="link-title">{title}</div>
+          {description && <p className="link-description">{description}</p>}
+          {renderLanguage()}
         </div>
+      </div>
     </a>
   );
 };
