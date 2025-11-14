@@ -162,7 +162,10 @@ const Menu = ({routes, language, toggleLanguage }) => {
           <button 
             key={tab.key}
             ref={(el) => (tabRefs.current[tab.key] = el)}
-            onClick={() => scrollToSection(tab.key)} 
+            onClick={() => {
+              setCurrentTab(tab.name);          // ensure visual state updates immediately
+              scrollToSection(tab.key);         // scroll + update URL + analytics
+            }} 
             className={`tab-item ${currentTab === tab.name ? 'active' : ''}`}
           >
             {tab.name}
