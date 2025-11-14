@@ -11,48 +11,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-    - name: Debug - Check Secrets
-      run: |
-        echo "🔍 Checking if secrets are configured..."
-        
-        if [ -z "${{ secrets.DEPLOY_HOST }}" ]; then
-          echo "❌ DEPLOY_HOST is not set!"
-        else
-          echo "✅ DEPLOY_HOST is set (length: ${#DEPLOY_HOST})"
-        fi
-        
-        if [ -z "${{ secrets.DEPLOY_USER }}" ]; then
-          echo "❌ DEPLOY_USER is not set!"
-        else
-          echo "✅ DEPLOY_USER is set: ${{ secrets.DEPLOY_USER }}"
-        fi
-        
-        if [ -z "${{ secrets.DEPLOY_SSH_KEY }}" ]; then
-          echo "❌ DEPLOY_SSH_KEY is not set!"
-        else
-          echo "✅ DEPLOY_SSH_KEY is set (length: ${#DEPLOY_SSH_KEY})"
-          echo "Key preview: ${DEPLOY_SSH_KEY:0:30}..."
-        fi
-      env:
-        DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-        DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
-    
-    - name: Debug - Test SSH Connection
-      uses: appleboy/ssh-action@v1.0.0
-      continue-on-error: true
-      with:
-        host: ${{ secrets.DEPLOY_HOST }}
-        username: ${{ secrets.DEPLOY_USER }}
-        key: ${{ secrets.DEPLOY_SSH_KEY }}
-        script: |
-          echo "✅ SSH Connection successful!"
-          echo "Hostname: $(hostname)"
-          echo "User: $(whoami)"
-          echo "Working directory: $(pwd)"
-          echo "Docker installed: $(which docker || echo 'NOT FOUND')"
-          echo "Docker Compose installed: $(which docker-compose || echo 'NOT FOUND')"
-          echo "Git installed: $(which git || echo 'NOT FOUND')"
-    
     - name: Deploy via SSH
       uses: appleboy/ssh-action@v1.0.0
       with:
