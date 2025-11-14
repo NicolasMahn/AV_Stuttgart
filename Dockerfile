@@ -46,7 +46,7 @@ RUN mkdir -p /app/analytics
 ENV PORT=3001
 ENV REACT_PORT=3000
 ENV NODE_ENV=production
-ENV ANALYTICS_PASSWORD=changeme
+# ANALYTICS_PASSWORD should be set via docker-compose environment or .env file
 
 # Expose both ports
 EXPOSE 3000 3001

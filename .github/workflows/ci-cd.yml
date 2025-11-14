@@ -41,6 +41,13 @@ jobs:
           NEW_COMMIT=$(git rev-parse --short HEAD)
           echo "New version: $NEW_COMMIT"
           
+          # Create .env file with secrets
+          echo "📝 Creating .env file..."
+          cat > .env << EOF
+          ANALYTICS_PASSWORD=${{ secrets.ANALYTICS_PASSWORD }}
+          FRONTEND_URL=https://av-stuttgart.de
+          EOF
+          
           # Stop current containers
           echo "🛑 Stopping current containers..."
           docker-compose down || true
