@@ -2,27 +2,26 @@
 
 ## Wie füge ich Inhalt hinzu?
 
-Wenn man Inhalt hinzufügen will, oder ändern will, muss man einfach das [content.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content.yaml) aufmachen und editieren.
+Wenn man Inhalt hinzufügen will, oder ändern will, muss man einfach das [content_de.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content_de.yaml) (oder die datei mit dem englischen Inhalt [content_en.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content_en.yaml)) aufmachen und editieren.
 
 <img width="414" alt="image" src="https://github.com/NicolasMahn/AV_Stuttgart/assets/64785342/fd2e905c-3a3f-4946-b206-61ab891980ad">
 
 Dann kann man den Link zu einer Quelle hinzufügen. Dafür muss man sich zuerst überlegen unter welcher Überkategorie die Quelle fällt. Die Reihenfolge der Links in der yaml Datei entspricht der Anzeige Reihenfolge auf der Website.
 Beispielsweise wird hier die Rede von Joey Carbstrong hinzufügen ([Link zum Video](https://www.youtube.com/watch?v=4XDVGgZijLA)). Diese fällt unter die Kategorie Ethik.
 Dafür muss ich einen Titel hinzufügen, den Link, und am besten auch in welcher Sprache das Video ist. Wenn man will kann man auch eine 'description' zu der Quelle hinzufügen.
-Bei den Spach-Kategorieen, bitte nur 'de' für deutsch ode 'en' für englisch schreiben.
-Das Feld keywords ist noch nicht implementiert (kann man also leer lassen.
+Bei den Spach-Kategorien, bitte nur 'de' für deutsch ode 'en' für englisch schreiben.
 
-```
+```yaml
   - title: "Wieso wir vegan leben sollten!"
     description: "Die Rede des australischen Tierrechtsaktivisten Joey Carbstrong in Oxford, in der er für eine vegane Welt argumentiert"
     url: "https://www.youtube.com/watch?v=4XDVGgZijLA"
+    thumbnail_url: null # Hier kann man dem Link ein großes Bild geben.
     image_url: null # Was man für das Bild machen soll, kommt im nächsten Abschnitt
     dub: "en"
     sub: null
-    keywords: []
 ```
 
-Wenn ein Youtube Video mit deutschen Untertiteln (und englischem Dubbing) hinzugefügt wird empfiehlt es sich diese Erweiterung `&hl=de&cc_lang_pref=de&cc_load_policy=1` an den Link anzuhängen. Das aktieviert automatisch Untertitel wenn man bei Youtube nicht angemeldet ist.
+Wenn ein Youtube Video mit deutschen Untertiteln (und englischem Dubbing) hinzugefügt wird empfiehlt es sich diese Erweiterung `&hl=de&cc_lang_pref=de&cc_load_policy=1` an den Link anzuhängen. Das aktieviert automatisch Untertitel.
 
 Um ein Bild hinzuzufügen muss man sich ein Bild raussuchen und dieses am besten zu einem quadratischen Bild zuschneiden. Dieses Bild muss man dann in den ['assets' Ordner](https://github.com/NicolasMahn/AV_Stuttgart/tree/main/public/assets) ablegen.
 
@@ -34,7 +33,7 @@ Um ein Bild hinzuzufügen muss man sich ein Bild raussuchen und dieses am besten
 
 Jetzt muss man 'den weg zum Bild' Machinenleserlich in die yaml hinzufügen.
 
-```
+```yaml
   - title: "Wieso wir vegan leben sollten!"
     description: "Die Rede des australischen Tierrechtsaktivisten Joey Carbstrong in Oxford, in der er für eine vegane Welt argumentiert"
     url: "https://www.youtube.com/watch?v=4XDVGgZijLA"
@@ -57,12 +56,23 @@ Die geupdatete Website sollte in den nächsten 3 Stunden Live sein.
 
 ## Wie erstelle ich einen neuen Menü-Punkt?
 
-Um einen neuen Menü-Punkt zu erstellen, muss man in der [content.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content.yaml) einen neuen Überpunkt anlegen.
-Danach muss man noch die [App.js](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/src/App.js) editieren. 
-Dabei steht... \
-..."name" für den Anzeige Name. Dieser Name muss mit dem Namen des Überpunkts in der Yaml-Date übereinstimmen.\
-..."path" ist der pfad der oben in der url angezeigt wird, hier nur Zeichen verwenden, die auch in einer URL auftauchen dürfen.
+Um einen neuen Menü-Punkt zu erstellen, muss man sowohl in der [content_de.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content_de.yaml) Datei einen neuen Menü-Eintrag unter `_config.menu` hinzufügen.
 
-<img width="402" alt="image" src="https://github.com/NicolasMahn/AV_Stuttgart/assets/64785342/65ac3d8e-b6e2-4573-965f-8440a6800050">
+Die Felder bedeuten:
+- **"name"**: Der Anzeige-Name im Menü
+- **"path"**: Der URL-Pfad (z.B. `/ethik`). Nur URL-sichere Zeichen verwenden (keine Umlaute, Leerzeichen als Bindestriche)
+- **"key"**: Der Schlüssel, der auf die entsprechende Inhalts-Sektion in der YAML-Datei verweist
 
+**Beispiel für einen neuen Menü-Punkt:**
+
+```yaml
+_config:
+  menu:
+    - name: "Ethik"
+      path: "/"
+      key: "Ethik"
+    - name: "Neuer Menüpunkt"  # Neuer Eintrag
+      path: "/neuer-punkt"
+      key: "Neuer_Menuepunkt" # Keine Sonderzeichen
+```
 
