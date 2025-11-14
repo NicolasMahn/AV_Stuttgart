@@ -258,6 +258,10 @@ app.get('/api/analytics/export-all', async (req, res) => {
 
 // Catch-all route: serve React app for any non-API routes (for client-side routing)
 app.get('*', (req, res) => {
+  // Don't serve HTML for API routes - let them 404 properly
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: 'API endpoint not found' });
+  }
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
