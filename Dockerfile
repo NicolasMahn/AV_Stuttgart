@@ -1,4 +1,5 @@
 # Step 1: Build stage
+# node:18-alpine supports both ARM64 and x86_64
 FROM node:18-alpine as build-stage
 
 WORKDIR /app
@@ -6,8 +7,8 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install ALL dependencies (including dev dependencies needed for build)
+RUN npm ci
 
 # Copy source code
 COPY . .
@@ -16,6 +17,7 @@ COPY . .
 RUN npm run build
 
 # Step 2: Production stage
+# Use multi-platform image that supports both ARM and x86
 FROM node:18-alpine
 
 WORKDIR /app

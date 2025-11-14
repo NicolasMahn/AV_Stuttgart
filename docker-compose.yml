@@ -6,6 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: av-stuttgart:local
+    # Docker will auto-detect and use the correct platform (ARM64 or AMD64)
     container_name: av-stuttgart-app
     ports:
       - "3001:3001"
