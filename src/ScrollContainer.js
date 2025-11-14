@@ -45,9 +45,22 @@ const ScrollContainer = ({ routes, fileName }) => {
     // Handle direct URL access to specific sections
     const hash = window.location.hash.slice(1);
     const normalizedHash = normalizeHash(hash);
+    
     if (normalizedHash && sectionRefs.current[normalizedHash]) {
+      // Scroll to the specified section
       setTimeout(() => {
         sectionRefs.current[normalizedHash].scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else if (!normalizedHash && routes.length > 0) {
+      // No hash present - scroll to first section and set its hash
+      setTimeout(() => {
+        const firstRoute = routes[0];
+        const firstNormalizedKey = normalizeHash(firstRoute.key);
+        if (sectionRefs.current[firstNormalizedKey]) {
+          sectionRefs.current[firstNormalizedKey].scrollIntoView({ behavior: 'smooth' });
+          setCurrentTab(firstRoute.name);
+          window.history.replaceState(null, '', `#${firstNormalizedKey}`);
+        }
       }, 100);
     }
 
