@@ -21,8 +21,8 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Install serve globally for React production server and apk for health checks
-RUN npm install -g serve && apk add --no-cache wget
+# Install wget for health checks
+RUN apk add --no-cache wget
 
 # Copy package files and install production dependencies
 COPY package*.json ./
@@ -44,16 +44,15 @@ RUN mkdir -p /app/analytics
 
 # Set environment variables with defaults
 ENV PORT=3001
-ENV REACT_PORT=3000
 ENV NODE_ENV=production
 ENV ANALYTICS_PASSWORD=changeme
 
-# Expose both ports
-EXPOSE 3000 3001
+# Expose server port
+EXPOSE 3001
 
-# Health check for both services
+# Health check for server
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget -q --spider http://localhost:3000 && wget -q --spider http://localhost:3001/api/analytics/summary || exit 1
+  CMD wget -q --spider http://localhost:3001 || exit 1
 
 # Start both services
 CMD ["sh", "startup.sh"]
