@@ -15,3 +15,4 @@ node server.js
 
 # Keep container running
 wait
+
