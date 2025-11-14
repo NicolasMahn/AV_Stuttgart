@@ -6,6 +6,7 @@
 .scroll-section {
   padding-top: 10px;
   padding-bottom: 20px;
+  scroll-margin-top: 160px; /* Account for the sticky menu height */
 }
 
 .section-divider {

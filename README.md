@@ -2,7 +2,7 @@
 
 ## Wie füge ich Inhalt hinzu?
 
-Wenn man Inhalt hinzufügen will, oder ändern will, muss man einfach das [content_de.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content_de.yaml) (oder die datei mit dem englischen Inhalt [content_en.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content_en.yaml)) aufmachen und editieren.
+Wenn man Inhalt hinzufügen will, oder ändern will, muss man einfach das [content_de.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content_de.yaml) (oder die Datei mit dem englischen Inhalt [content_en.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content_en.yaml)) aufmachen und editieren.
 
 <img width="414" alt="image" src="https://github.com/NicolasMahn/AV_Stuttgart/assets/64785342/fd2e905c-3a3f-4946-b206-61ab891980ad">
 

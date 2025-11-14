@@ -119,17 +119,18 @@ Starthilfe:
 
 
 Ernährung:
-  - title: "Optimal vegan ernährt - wir zeigen dir, wie's geht"
+  - title: "Optimal vegan ernährt - Prof. Markus Keller zeigt, wie's geht."
     description: "Prof. Markus Keller erklärt die Gießener vegane Lebensmittelpyramide - wissenschaftsbasierte Empfehlungen für eine optimale pflanzliche Ernährung."
     url: "https://www.youtube.com/watch?v=urCNiqlUJDE"
+    thumbnail_url: "/assets/vegane_pyramide.png"
     image_url: "/assets/markus_keller.webp"
     dub: null
     sub: null
 
-  - title: "Veganer Multinährstoff" #TODO: Link Broken
-    description: "Hochwertiges Nahrungsergänzungsmittel mit allen wichtigen Vitaminen und Mineralstoffen für eine vegane Ernährung - entwickelt von Watson Nutrition."
-    url: "https://watsonnutrition.de/produkt/proveg-essentials/"
-    image_url: "/assets/pro_veg.webp"
+  - title: "Veganer Multinährstoff"
+    description: "von Sunday Natural"
+    url: "https://www.sunday.de/multivitamin-essentials-one-a-day.html"
+    image_url: "/assets/multivitamin.png"
     dub: null
     sub: null
 

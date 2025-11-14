@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "@applitools/eyes-playwright": "^1.41.1",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@playwright/test": "^1.56.1",
     "@types/node": "^24.10.1",
