@@ -32,7 +32,7 @@ const Menu = ({routes, language, toggleLanguage }) => {
     // position of the element inside the scroll container
     const offsetTop = elementRect.top - containerRect.top;
   
-    const extraOffset = 20;
+    const extraOffset = 40;
   
     const targetY = container.scrollTop + offsetTop - extraOffset;
   
