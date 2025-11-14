@@ -68,6 +68,10 @@ app.post('/api/analytics/auth', async (req, res) => {
   try {
     const { password } = req.body;
     
+    // Debug logging (remove in production)
+    console.log('Auth attempt - Password provided:', password ? '***' : 'undefined');
+    console.log('Expected password set:', ANALYTICS_PASSWORD ? 'Yes' : 'No (using undefined)');
+    
     if (password === ANALYTICS_PASSWORD) {
       res.json({ success: true });
     } else {
