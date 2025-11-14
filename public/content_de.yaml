@@ -1,19 +1,14 @@
 _config:
   menu:
     - name: "Ethik"
-      path: "/"
       key: "Ethik"
     - name: "Starthilfe"
-      path: "/starthilfe"
       key: "Starthilfe"
     - name: "Ernährung"
-      path: "/ernaehrung"
       key: "Ernährung"
     - name: "Rezepte"
-      path: "/rezepte"
       key: "Rezepte"
     - name: "Weitere Informationen"
-      path: "/weitere-informationen"
       key: "Weitere Informationen"
 
 Ethik:

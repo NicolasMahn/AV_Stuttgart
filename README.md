@@ -40,7 +40,6 @@ Jetzt muss man 'den weg zum Bild' Machinenleserlich in die yaml hinzufügen.
     image_url: "/assets/Joey_Carbstrong.jpg"
     dub: "en"
     sub: null
-    keywords: []
 ```
 Jetzt muss man die content.yaml noch speichern:
 
@@ -60,7 +59,6 @@ Um einen neuen Menü-Punkt zu erstellen, muss man sowohl in der [content_de.yaml
 
 Die Felder bedeuten:
 - **"name"**: Der Anzeige-Name im Menü
-- **"path"**: Der URL-Pfad (z.B. `/ethik`). Nur URL-sichere Zeichen verwenden (keine Umlaute, Leerzeichen als Bindestriche)
 - **"key"**: Der Schlüssel, der auf die entsprechende Inhalts-Sektion in der YAML-Datei verweist
 
 **Beispiel für einen neuen Menü-Punkt:**
@@ -69,10 +67,8 @@ Die Felder bedeuten:
 _config:
   menu:
     - name: "Ethik"
-      path: "/"
       key: "Ethik"
     - name: "Neuer Menüpunkt"  # Neuer Eintrag
-      path: "/neuer-punkt"
       key: "Neuer_Menuepunkt" # Keine Sonderzeichen
 ```
 

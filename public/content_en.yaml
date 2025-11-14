@@ -1,13 +1,10 @@
 _config:
   menu:
     - name: "Ethics"
-      path: "/en/"
       key: "Ethics"
     - name: "How to go vegan"
-      path: "/en/how-to-go-vegan"
       key: "How to go vegan"
     - name: "Nutrition"
-      path: "/en/nutrition"
       key: "Nutrition"
 
 Ethics:
