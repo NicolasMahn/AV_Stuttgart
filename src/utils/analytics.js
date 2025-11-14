@@ -65,16 +65,13 @@ export const trackEvent = (eventType, eventData = {}) => {
 // Send tracking data to backend
 const sendToBackend = async (data) => {
   try {
-    // API is on port 3001
-    const apiUrl = `${window.location.protocol}//${window.location.hostname}:3001/api/track`;
-    
     // Use beacon API for reliable tracking even when page is closing
     if (navigator.sendBeacon) {
       const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
-      navigator.sendBeacon(apiUrl, blob);
+      navigator.sendBeacon('/api/track', blob);
     } else {
       // Fallback to fetch
-      await fetch(apiUrl, {
+      await fetch('/api/track', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),

@@ -13,12 +13,22 @@ app.use(express.json());
 
 // Enable CORS since React runs on different port
 app.use((req, res, next) => {
-  // Allow all origins for now (you can restrict this later)
-  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+  // Allow requests from React on port 80 (externally) or port 3000 (internally)
+  const origin = req.headers.origin;
+  const allowedOrigins = [
+    'http://localhost',
+    'http://localhost:80',
+    'http://localhost:3000',
+    process.env.FRONTEND_URL // For production domain
+  ].filter(Boolean);
+  
+  if (allowedOrigins.includes(origin) || !origin) {
+    res.header('Access-Control-Allow-Origin', origin || '*');
+  }
+  
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  
   if (req.method === 'OPTIONS') {
     return res.sendStatus(200);
   }
@@ -57,10 +67,6 @@ app.post('/api/track', async (req, res) => {
 app.post('/api/analytics/auth', async (req, res) => {
   try {
     const { password } = req.body;
-    
-    // Debug logging (remove in production)
-    console.log('Auth attempt - Password provided:', password ? '***' : 'undefined');
-    console.log('Expected password set:', ANALYTICS_PASSWORD ? 'Yes' : 'No (using undefined)');
     
     if (password === ANALYTICS_PASSWORD) {
       res.json({ success: true });
