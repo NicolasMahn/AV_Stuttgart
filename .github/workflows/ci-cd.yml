@@ -66,12 +66,18 @@ jobs:
           if docker ps | grep -q av-stuttgart-app; then
             echo "✅ Container is running"
             
-            # Test analytics endpoint
-            if curl -f http://localhost:3001/api/analytics/summary > /dev/null 2>&1; then
-              echo "✅ Health check passed - Analytics API responding"
+            # Test React server on port 80
+            if curl -f http://localhost:80 > /dev/null 2>&1; then
+              echo "✅ React server responding on port 80"
             else
-              echo "⚠️ Warning: Health check failed, but container is running"
-              echo "   Check logs: docker-compose logs"
+              echo "⚠️ Warning: React server not responding on port 80"
+            fi
+            
+            # Test API server on port 3001
+            if curl -f http://localhost:3001/api/analytics/summary > /dev/null 2>&1; then
+              echo "✅ API server responding on port 3001"
+            else
+              echo "⚠️ Warning: API server not responding on port 3001"
             fi
 
             

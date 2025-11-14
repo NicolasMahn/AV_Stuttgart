@@ -9,11 +9,14 @@ services:
     # Docker will auto-detect and use the correct platform (ARM64 or AMD64)
     container_name: av-stuttgart-app
     ports:
-      - "3001:3001"
+      - "80:3000"    # React production server (external 80 -> internal 3000)
+      - "3001:3001"  # Express API server
     environment:
       - NODE_ENV=production
       - PORT=3001
+      - REACT_PORT=3000
       - ANALYTICS_PASSWORD=${ANALYTICS_PASSWORD:-changeme}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost}
     volumes:
       # Persist analytics data outside container
       - ./analytics:/app/analytics

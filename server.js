@@ -11,8 +11,31 @@ const ANALYTICS_PASSWORD = process.env.ANALYTICS_PASSWORD;
 // Middleware
 app.use(express.json());
 
-// Serve static files from the React build
-app.use(express.static(path.join(__dirname, 'build')));
+// Enable CORS since React runs on different port
+app.use((req, res, next) => {
+  // Allow requests from React on port 80 (externally) or port 3000 (internally)
+  const origin = req.headers.origin;
+  const allowedOrigins = [
+    'http://localhost',
+    'http://localhost:80',
+    'http://localhost:3000',
+    process.env.FRONTEND_URL // For production domain
+  ].filter(Boolean);
+  
+  if (allowedOrigins.includes(origin) || !origin) {
+    res.header('Access-Control-Allow-Origin', origin || '*');
+  }
+  
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
+// Note: NOT serving React static files - that's done by serve on port 3000
 
 // Tracking endpoint
 app.post('/api/track', async (req, res) => {
@@ -241,10 +264,8 @@ app.get('/api/analytics/export-all', async (req, res) => {
   }
 });
 
-// Serve React app for all other routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// API-only server - React is served separately on port 3000
+// No catch-all route needed
 
 // Start server
 app.listen(PORT, () => {

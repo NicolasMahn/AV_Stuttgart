@@ -17,12 +17,14 @@ COPY . .
 RUN npm run build
 
 # Step 2: Production stage
-# Use multi-platform image that supports both ARM and x86
 FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files and install production dependencies only
+# Install serve globally for React production server and apk for health checks
+RUN npm install -g serve && apk add --no-cache wget
+
+# Copy package files and install production dependencies
 COPY package*.json ./
 RUN npm ci --only=production
 
@@ -32,21 +34,26 @@ COPY --from=build-stage /app/build ./build
 # Copy server and necessary files
 COPY server.js ./
 COPY view-analytics.js ./
+COPY startup.sh ./
+
+# Make startup script executable
+RUN chmod +x startup.sh
 
 # Create analytics directory
 RUN mkdir -p /app/analytics
 
 # Set environment variables with defaults
 ENV PORT=3001
+ENV REACT_PORT=3000
 ENV NODE_ENV=production
 ENV ANALYTICS_PASSWORD=changeme
 
-# Expose port
-EXPOSE 3001
+# Expose both ports
+EXPOSE 3000 3001
 
-# Health check
+# Health check for both services
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3001/api/analytics/summary', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
+  CMD wget -q --spider http://localhost:3000 && wget -q --spider http://localhost:3001/api/analytics/summary || exit 1
 
-# Start the server
-CMD ["node", "server.js"]
+# Start both services
+CMD ["sh", "startup.sh"]
