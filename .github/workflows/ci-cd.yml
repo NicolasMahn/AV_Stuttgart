@@ -7,32 +7,115 @@ on:
     branches: [ main, master ]
 
 jobs:
-  deploy:
-    name: Build and Deploy
-    # Only deploy on push to main (not on pull requests)
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  test:
+    name: Test Build
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        node-version: '18'
+        cache: 'npm'
 
-    - name: Build and Push Docker Image
-      uses: docker/build-push-action@v5
+    - name: Install Dependencies
+      run: npm ci
+
+    - name: Run Tests
+      run: npm test -- --watchAll=false --passWithNoTests
+
+    - name: Build React App
+      run: npm run build
+
+    - name: Verify Build Output
+      run: |
+        if [ ! -d "build" ]; then
+          echo "Build directory not found!"
+          exit 1
+        fi
+        echo "Build successful - $(du -sh build)"
+
+  deploy:
+    name: Deploy to EC2
+    needs: test
+    # Only deploy on push to main (not on pull requests)
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@v1.0.0
       with:
-        context: .
-        file: Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/av_stuttgart:latest
+        host: ${{ secrets.DEPLOY_HOST }}
+        username: ${{ secrets.DEPLOY_USER }}
+        key: ${{ secrets.DEPLOY_SSH_KEY }}
+        script: |
+          set -e  # Exit on any error
+          
+          echo "🚀 Starting deployment..."
+          
+          # Navigate to deployment directory
+          cd /opt/av-stuttgart || exit 1
+          
+          # Backup current version (in case rollback needed)
+          echo "📦 Backing up current deployment..."
+          if [ -d ".git" ]; then
+            CURRENT_COMMIT=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+            echo "Current version: $CURRENT_COMMIT"
+          fi
+          
+          # Pull latest code from GitHub
+          echo "⬇️ Pulling latest code from GitHub..."
+          git fetch origin
+          git reset --hard origin/main
+          
+          # Show what changed
+          NEW_COMMIT=$(git rev-parse --short HEAD)
+          echo "New version: $NEW_COMMIT"
+          
+          # Stop current containers
+          echo "🛑 Stopping current containers..."
+          docker-compose down || true
+          
+          # Remove old images to free space (optional)
+          echo "🧹 Cleaning up old images..."
+          docker image prune -f || true
+          
+          # Build new image directly on server
+          echo "🔨 Building Docker image on server..."
+          docker-compose build --no-cache
+          
+          # Start new containers
+          echo "▶️ Starting new containers..."
+          docker-compose up -d
+          
+          # Wait for container to be ready
+          echo "⏳ Waiting for container to be healthy..."
+          sleep 10
+          
+          # Health check
+          echo "🏥 Running health checks..."
+          if docker ps | grep -q av-stuttgart-app; then
+            echo "✅ Container is running"
+            
+            # Test analytics endpoint
+            if curl -f http://localhost:3001/api/analytics/summary > /dev/null 2>&1; then
+              echo "✅ Health check passed - Analytics API responding"
+            else
+              echo "⚠️ Warning: Health check failed, but container is running"
+              echo "   Check logs: docker-compose logs"
+            fi
 
-    - name: Deployment Success
-      run: echo "Build and push completed successfully"
+            
+          else
+            echo "❌ Deployment failed - Container is not running"
+            echo "📋 Recent logs:"
+            docker-compose logs --tail=50
+            exit 1
+          fi
+
+    - name: Deployment Summary
+      run: |
+        echo "Deployment completed successfully!"
 

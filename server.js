@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Analytics password - CHANGE THIS!
-const ANALYTICS_PASSWORD = process.env.ANALYTICS_PASSWORD || 'admin123';
+const ANALYTICS_PASSWORD = process.env.ANALYTICS_PASSWORD;
 
 // Middleware
 app.use(express.json());

@@ -35,3 +35,8 @@ node_modules/
 # Analytics data
 /analytics/
 *.jsonl
+
+# Environment variables
+.env
+.env.local
+.env.production
