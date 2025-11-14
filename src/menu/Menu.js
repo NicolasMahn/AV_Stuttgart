@@ -24,18 +24,66 @@ const Menu = ({routes, language, toggleLanguage }) => {
   // Function to scroll to a section
   const scrollToSection = (sectionKey) => {
     const normalizedKey = normalizeHash(sectionKey);
-    const element = document.getElementById(normalizedKey);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Update URL hash with normalized version
-      window.history.pushState(null, '', `#${normalizedKey}`);
-      
-      // Track navigation
-      const route = routes.find(r => r.key === sectionKey);
-      if (route) {
-        trackNavigation(route.name, sectionKey);
+    
+    // Try to find the element, with retry logic for async content loading
+    const findAndScroll = (retries = 5) => {
+      const element = document.getElementById(normalizedKey);
+      if (element) {
+        // Ensure element is in the viewport by checking if it's rendered
+        // Sometimes elements exist in DOM but aren't fully rendered yet
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.width > 0 && rect.height > 0;
+        
+        if (!isVisible && retries > 0) {
+          // Element exists but might not be fully rendered, retry
+          setTimeout(() => findAndScroll(retries - 1), 100);
+          return;
+        }
+        
+        // Use scrollIntoView with options that work well with scroll-margin-top
+        // The CSS scroll-margin-top will handle the offset for the sticky menu
+        element.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start',
+          inline: 'nearest'
+        });
+        
+        // Small delay to ensure scroll completes, then verify position
+        setTimeout(() => {
+          const finalRect = element.getBoundingClientRect();
+          const menu = document.querySelector('.menu');
+          const menuHeight = menu ? menu.offsetHeight : 0;
+          
+          // If element is still not visible after scroll, try again with manual calculation
+          if (finalRect.top < menuHeight || finalRect.bottom < 0) {
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - menuHeight - 10; // Extra 10px padding
+            window.scrollTo({
+              top: Math.max(0, offsetPosition),
+              behavior: 'smooth'
+            });
+          }
+        }, 300);
+        
+        // Update URL hash with normalized version
+        window.history.pushState(null, '', `#${normalizedKey}`);
+        
+        // Track navigation
+        const route = routes.find(r => r.key === sectionKey);
+        if (route) {
+          trackNavigation(route.name, sectionKey);
+        }
+      } else if (retries > 0) {
+        // Retry after a short delay if element not found (content might still be loading)
+        setTimeout(() => findAndScroll(retries - 1), 100);
+      } else {
+        // Fallback: just update the URL hash even if element not found
+        window.history.pushState(null, '', `#${normalizedKey}`);
+        console.warn(`Section element not found: ${normalizedKey}`);
       }
-    }
+    };
+    
+    findAndScroll();
   };
 
   // Scroll active tab into view when currentTab changes

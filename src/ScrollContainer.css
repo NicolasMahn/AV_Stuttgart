@@ -51,6 +51,7 @@
   
   .scroll-section {
     padding-bottom: 15px;
+    scroll-margin-top: 120px; /* Smaller offset for mobile menu */
   }
 
   .section-divider {
