@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useTab } from './TabContext'
+import { useTab } from './TabContext';
+import { trackNavigation } from '../utils/analytics';
 
 import './Menu.css';
 
@@ -28,6 +29,12 @@ const Menu = ({routes, language, toggleLanguage }) => {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       // Update URL hash with normalized version
       window.history.pushState(null, '', `#${normalizedKey}`);
+      
+      // Track navigation
+      const route = routes.find(r => r.key === sectionKey);
+      if (route) {
+        trackNavigation(route.name, sectionKey);
+      }
     }
   };
 

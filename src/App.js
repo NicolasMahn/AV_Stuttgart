@@ -10,9 +10,12 @@ import Datenschutz from './Datenschutz';
 import Impressum from './Impressum';
 import Spenden from './Spenden';
 import Kontakt from './Kontakt';
+import Analytics from './Analytics';
 
 import './App.css';
 import { TabProvider } from './menu/TabContext';
+import CookieConsent from './components/CookieConsent';
+import { trackPageView, trackLanguageChange, setCookie, getCookie } from './utils/analytics';
 
 // Utility function to normalize hash names (replace spaces with underscores)
 const normalizeHash = (hash) => {
@@ -30,20 +33,25 @@ function AppContent({ language, setLanguage }) {
   const fileNameDE = "/content_de.yaml"
   const fileNameEN = "/content_en.yaml"
 
+  // Track page views
+  useEffect(() => {
+    trackPageView();
+  }, [location.pathname, location.hash]);
+
   // Preserve hash during language-based routing
   useEffect(() => {
     const rawHash = window.location.hash;
     // Normalize hash (replace spaces with underscores)
     const normalizedHash = rawHash ? '#' + normalizeHash(rawHash.slice(1)) : '';
     const currentPath = location.pathname;
-    const isSpecialPage = ['/datenschutz', '/impressum', '/spenden', '/kontakt', '/karte'].includes(currentPath);
+    const isSpecialPage = ['/datenschutz', '/impressum', '/spenden', '/kontakt', '/karte', '/analytics'].includes(currentPath);
     
     // Don't redirect special pages
     if (isSpecialPage) return;
     
     // Check if we need to redirect based on language
     const expectedPath = language === 'de' ? '/' : '/en/';
-    const needsRedirect = currentPath !== expectedPath && currentPath !== '/datenschutz' && currentPath !== '/impressum' && currentPath !== '/spenden' && currentPath !== '/kontakt';
+    const needsRedirect = currentPath !== expectedPath && currentPath !== '/datenschutz' && currentPath !== '/impressum' && currentPath !== '/spenden' && currentPath !== '/kontakt' && currentPath !== '/analytics';
     
     if (needsRedirect) {
       navigate(expectedPath + normalizedHash, { replace: true });
@@ -87,7 +95,14 @@ function AppContent({ language, setLanguage }) {
 
   const toggleLanguage = () => {
     const newLanguage = language === 'de' ? 'en' : 'de';
+    
+    // Track language change
+    trackLanguageChange(language, newLanguage);
+    
+    // Save to both localStorage and cookie
     localStorage.setItem('language', newLanguage);
+    setCookie('av_language', newLanguage, 365);
+    
     setLanguage(newLanguage);
 
     // Navigate to the base path for the new language, preserving hash if present
@@ -116,7 +131,7 @@ function AppContent({ language, setLanguage }) {
     );
   }
 
-  const isSpecialPage = ['/datenschutz', '/impressum', '/spenden', '/kontakt'].includes(location.pathname);
+  const isSpecialPage = ['/datenschutz', '/impressum', '/spenden', '/kontakt', '/analytics'].includes(location.pathname);
 
   return (
     <TabProvider>
@@ -131,6 +146,7 @@ function AppContent({ language, setLanguage }) {
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/spenden" element={<Spenden />} />
           <Route path="/kontakt" element={<Kontakt />} />
+          <Route path="/analytics" element={<Analytics />} />
           <Route path="*" element={<ScrollContainer routes={currentRoutes} fileName={currentFileName} />} />
         </Routes>
       </Layout>
@@ -139,12 +155,14 @@ function AppContent({ language, setLanguage }) {
 }
 
 function App() {
-  // Initialize language from localStorage or default to German
+  // Initialize language from cookie first, then localStorage, or default to German
   const [language, setLanguage] = useState(() => {
+    const cookieLanguage = getCookie('av_language');
+    if (cookieLanguage) return cookieLanguage;
+    
     const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
-      return savedLanguage;
-    }
+    if (savedLanguage) return savedLanguage;
+    
     // Always default to German
     return 'de';
   });
@@ -152,6 +170,7 @@ function App() {
   return (
     <Router>
       <AppContent language={language} setLanguage={setLanguage} />
+      <CookieConsent language={language} />
     </Router>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import './LinkItem.css'; 
+import './LinkItem.css';
+import { trackLinkClick } from '../utils/analytics'; 
 
 const LinkItem = ({ title, url, image, thumbnail, description, dub, sub, appStoreUrl }) => {
   const hasImage = Boolean(image);
@@ -18,10 +19,15 @@ const LinkItem = ({ title, url, image, thumbnail, description, dub, sub, appStor
     return languageCode ? `/assets/Flag_${languageCode.toUpperCase()}.svg` : null;
   };
 
+  // Track link clicks
+  const handleClick = () => {
+    trackLinkClick(title, finalUrl, 'external_link');
+  };
+
   // Instagram-style layout with large thumbnail
   if (hasThumbnail) {
     return (
-      <a href={finalUrl} target="_blank" rel="noopener noreferrer">
+      <a href={finalUrl} target="_blank" rel="noopener noreferrer" onClick={handleClick}>
         <div className="link-card link-item-instagram">
           <div className="instagram-thumbnail">
             <img src={thumbnail} alt={title} className="thumbnail-image" />
@@ -74,7 +80,7 @@ const LinkItem = ({ title, url, image, thumbnail, description, dub, sub, appStor
 
   // Standard horizontal layout
   return (
-    <a href={finalUrl} target="_blank" rel="noopener noreferrer">
+    <a href={finalUrl} target="_blank" rel="noopener noreferrer" onClick={handleClick}>
       <div className="link-card link-item">
         {hasImage && (
           <img src={image} alt={title} className="link-image" />
