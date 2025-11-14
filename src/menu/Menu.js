@@ -20,21 +20,43 @@ const Menu = ({routes, language, toggleLanguage }) => {
   const [logo, setLogo] = useState('/assets/AV_Logo_Text_Querformat_weiss.svg'); // State to manage the logo
   const [displayLogo, setDisplayLogo] = useState(true); // State to manage whether to display the logo
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768); // State to check if device is desktop
+  
+  const scrollToSectionManual = (element) => {
+    // this is the real scroll container from ScrollContainer.jsx
+    const container = document.querySelector('.scroll-container');
+    if (!container || !element) return;
+  
+    const containerRect = container.getBoundingClientRect();
+    const elementRect = element.getBoundingClientRect();
+  
+    // position of the element inside the scroll container
+    const offsetTop = elementRect.top - containerRect.top;
+  
+    const extraOffset = 20;
+  
+    const targetY = container.scrollTop + offsetTop - extraOffset;
+  
+    document.body.scrollTo({
+      top: targetY,
+      behavior: 'smooth',
+    });
+  };
 
   // Function to scroll to a section
   const scrollToSection = (sectionKey) => {
     const normalizedKey = normalizeHash(sectionKey);
     const element = document.getElementById(normalizedKey);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Update URL hash with normalized version
-      window.history.pushState(null, '', `#${normalizedKey}`);
-      
-      // Track navigation
-      const route = routes.find(r => r.key === sectionKey);
-      if (route) {
-        trackNavigation(route.name, sectionKey);
-      }
+    if (!element) return;
+  
+    scrollToSectionManual(element);
+  
+    // Keep hash in sync
+    window.history.pushState(null, '', `#${normalizedKey}`);
+  
+    // Optional analytics
+    const route = routes.find(r => r.key === sectionKey);
+    if (route) {
+      trackNavigation(route.name, sectionKey);
     }
   };
 

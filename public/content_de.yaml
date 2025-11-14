@@ -5,7 +5,7 @@ _config:
     - name: "Starthilfe"
       key: "Starthilfe"
     - name: "Ernährung"
-      key: "Ernährung"
+      key: "Ernaehrung"
     - name: "Rezepte"
       key: "Rezepte"
     - name: "Weitere Informationen"
@@ -19,7 +19,7 @@ Ethik:
     sub: null
     description: "Umfassende Dokumentation über die Tierindustrie weltweit - von Massentierhaltung über Schlachthöfe bis zur Lederproduktion."  
 
-  - title: "Eine Rede, die dir die Augen öffnet!"
+  - title: "Eine Augen öffnende Rede!"
     description: "Eine aufrüttelnde Rede, die Tausende von Studenten in Universitäten überall in Großbritannien hörten."
     url: "https://www.youtube.com/watch?v=Z3u7hXpOm58&hl=de&cc_lang_pref=de&cc_load_policy=1"
     image_url: "/assets/earthling_ed.webp"
@@ -118,7 +118,7 @@ Starthilfe:
 
 
 
-Ernährung:
+Ernaehrung:
   - title: "Optimal vegan ernährt - Prof. Markus Keller zeigt, wie's geht"
     description: "Prof. Markus Keller erklärt die Gießener vegane Lebensmittelpyramide - wissenschaftsbasierte Empfehlungen für eine optimale pflanzliche Ernährung."
     url: "https://www.youtube.com/watch?v=urCNiqlUJDE"
