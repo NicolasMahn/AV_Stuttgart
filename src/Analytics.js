@@ -27,7 +27,10 @@ const Analytics = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/analytics/auth', {
+      // API is on port 3001, React is on port 80
+      const apiUrl = `${window.location.protocol}//${window.location.hostname}:3001/api/analytics/auth`;
+      
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password })
@@ -43,6 +46,7 @@ const Analytics = () => {
         setError('Falsches Passwort / Wrong password');
       }
     } catch (err) {
+      console.error('Auth error:', err);
       setError('Verbindungsfehler / Connection error');
     } finally {
       setLoading(false);
@@ -58,7 +62,8 @@ const Analytics = () => {
 
   const loadAnalytics = async () => {
     try {
-      const response = await fetch('/api/analytics/summary');
+      const apiUrl = `${window.location.protocol}//${window.location.hostname}:3001/api/analytics/summary`;
+      const response = await fetch(apiUrl);
       const data = await response.json();
       setSummary(data);
     } catch (err) {
@@ -68,7 +73,8 @@ const Analytics = () => {
 
   const downloadData = async (date) => {
     try {
-      const response = await fetch(`/api/analytics/export?date=${date}`);
+      const apiUrl = `${window.location.protocol}//${window.location.hostname}:3001/api/analytics/export?date=${date}`;
+      const response = await fetch(apiUrl);
       const data = await response.json();
       
       // Create downloadable file
@@ -88,7 +94,8 @@ const Analytics = () => {
 
   const downloadAllData = async () => {
     try {
-      const response = await fetch('/api/analytics/export-all');
+      const apiUrl = `${window.location.protocol}//${window.location.hostname}:3001/api/analytics/export-all`;
+      const response = await fetch(apiUrl);
       const data = await response.json();
       
       // Create downloadable file
