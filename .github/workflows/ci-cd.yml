@@ -81,7 +81,7 @@ jobs:
 
           echo "Waiting for the site to answer..."
           for attempt in $(seq 1 12); do
-            if curl -fsS -o /dev/null --resolve av-stuttgart.de:443:127.0.0.1 https://av-stuttgart.de/; then
+            if curl -fsS -o /dev/null --resolve acvi-stuttgart.de:443:127.0.0.1 https://acvi-stuttgart.de/; then
               echo "Site is up"
               exit 0
             fi

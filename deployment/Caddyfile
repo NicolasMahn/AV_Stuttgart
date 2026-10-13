@@ -1,8 +1,8 @@
-av-stuttgart.de, www.av-stuttgart.de {
+acvi-stuttgart.de, www.acvi-stuttgart.de {
 	reverse_proxy av-stuttgart:3001
 }
 
-activistsforthevictimsstuttgart.de, www.activistsforthevictimsstuttgart.de,
-acvi-stuttgart.de, www.acvi-stuttgart.de {
-	redir https://av-stuttgart.de{uri} permanent
+av-stuttgart.de, www.av-stuttgart.de,
+activistsforthevictimsstuttgart.de, www.activistsforthevictimsstuttgart.de {
+	redir https://acvi-stuttgart.de{uri} permanent
 }
