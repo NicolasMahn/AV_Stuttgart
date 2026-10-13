@@ -23,7 +23,9 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./deployment/Caddyfile:/etc/caddy/Caddyfile:ro
+      # The directory, not the file: a deploy replaces the Caddyfile, and a
+      # single-file mount would keep showing the container the old one.
+      - ./deployment:/etc/caddy:ro
       # Certificates live here; losing this volume means requesting new ones
       - caddy_data:/data
       - caddy_config:/config

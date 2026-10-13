@@ -76,6 +76,7 @@ jobs:
 
           # Only containers whose image or config changed are recreated.
           docker compose up -d --remove-orphans
+          docker compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile
           docker image prune -f
 
           echo "Waiting for the site to answer..."
