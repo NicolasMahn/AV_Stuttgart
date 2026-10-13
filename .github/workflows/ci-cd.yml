@@ -2,94 +2,92 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
+
+# A second push waits for the running deploy instead of racing it on the server.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  IMAGE: ghcr.io/nicolasmahn/av_stuttgart
 
 jobs:
+  build:
+    name: Build image
+    # The server is ARM64, so build natively on an ARM runner instead of emulating.
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: docker/setup-buildx-action@v3
+
+    - uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: docker/build-push-action@v6
+      with:
+        context: .
+        push: true
+        tags: |
+          ${{ env.IMAGE }}:latest
+          ${{ env.IMAGE }}:${{ github.sha }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
   deploy:
-    name: Deploy to EC2
-    # Only deploy on push to main
-    if: github.ref == 'refs/heads/main'
+    name: Deploy to server
+    needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 3600
+    timeout-minutes: 10
+    permissions:
+      packages: read
     steps:
     - name: Deploy via SSH
       uses: appleboy/ssh-action@v1.0.0
+      env:
+        GHCR_USER: ${{ github.actor }}
+        GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USER }}
         key: ${{ secrets.DEPLOY_SSH_KEY }}
+        envs: GHCR_USER,GHCR_TOKEN
         script: |
-          set -e  # Exit on any error
-          
-          echo "🚀 Starting deployment..."
-          
-          # Navigate to deployment directory
-          cd /opt/av-stuttgart || exit 1
-          
-          # Backup current version (in case rollback needed)
-          echo "📦 Backing up current deployment..."
-          if [ -d ".git" ]; then
-            CURRENT_COMMIT=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
-            echo "Current version: $CURRENT_COMMIT"
-          fi
-          
-          # Pull latest code from GitHub
-          echo "⬇️ Pulling latest code from GitHub..."
+          set -e
+
+          cd /opt/av-stuttgart
+
+          echo "Current version: $(git rev-parse --short HEAD)"
           git fetch origin
           git reset --hard origin/main
-          
-          # Show what changed
-          NEW_COMMIT=$(git rev-parse --short HEAD)
-          echo "New version: $NEW_COMMIT"
-          
-          # Stop current containers
-          echo "🛑 Stopping current containers..."
-          docker-compose down || true
-          
-          # Remove old images to free space (optional)
-          echo "🧹 Cleaning up old images..."
-          docker image prune -f || true
-          
-          # Build new image directly on server
-          echo "🔨 Building Docker image on server..."
-          docker-compose build --no-cache
-          
-          # Start new containers
-          echo "▶️ Starting new containers..."
-          docker-compose up -d
-          
-          # Wait for container to be ready
-          echo "⏳ Waiting for container to be healthy..."
-          sleep 10
-          
-          # Health check
-          echo "🏥 Running health checks..."
-          if docker ps | grep -q av-stuttgart-app; then
-            echo "✅ Container is running"
-            
-            # Test React server on port 80
-            if curl -f http://localhost:80 > /dev/null 2>&1; then
-              echo "✅ React server responding on port 80"
-            else
-              echo "⚠️ Warning: React server not responding on port 80"
+          echo "New version: $(git rev-parse --short HEAD)"
+
+          echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
+          docker compose pull
+          docker logout ghcr.io
+
+          # Only containers whose image or config changed are recreated.
+          docker compose up -d --remove-orphans
+          docker image prune -f
+
+          echo "Waiting for the site to answer..."
+          for attempt in $(seq 1 12); do
+            if curl -fsS -o /dev/null --resolve av-stuttgart.de:443:127.0.0.1 https://av-stuttgart.de/; then
+              echo "Site is up"
+              exit 0
             fi
-            
-            # Test API server on port 3001
-            if curl -f http://localhost:3001/api/analytics/summary > /dev/null 2>&1; then
-              echo "✅ API server responding on port 3001"
-            else
-              echo "⚠️ Warning: API server not responding on port 3001"
-            fi
+            sleep 5
+          done
 
-            
-          else
-            echo "❌ Deployment failed - Container is not running"
-            echo "📋 Recent logs:"
-            docker-compose logs --tail=50
-            exit 1
-          fi
-
-    - name: Deployment Summary
-      run: |
-        echo "Deployment completed successfully!"
-
+          echo "Site did not come up"
+          docker compose ps
+          docker compose logs --tail=50
+          exit 1

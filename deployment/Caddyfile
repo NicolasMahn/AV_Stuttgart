@@ -1,0 +1,3 @@
+av-stuttgart.de, www.av-stuttgart.de {
+	reverse_proxy av-stuttgart:3001
+}

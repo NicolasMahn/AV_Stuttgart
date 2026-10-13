@@ -1,15 +1,12 @@
-version: '3.8'
-
 services:
   av-stuttgart:
+    # CI builds and publishes this image; the server only pulls it.
+    # For a local build: docker compose build
+    image: ghcr.io/nicolasmahn/av_stuttgart:latest
     build:
       context: .
       dockerfile: Dockerfile
-    image: av-stuttgart:local
-    # Docker will auto-detect and use the correct platform (ARM64 or AMD64)
     container_name: av-stuttgart-app
-    ports:
-      - "80:3001"    # Express server (serves both React app and API)
     environment:
       - NODE_ENV=production
       - PORT=3001
@@ -18,8 +15,22 @@ services:
       # Persist analytics data outside container
       - ./analytics:/app/analytics
     restart: unless-stopped
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.av-stuttgart.rule=Host(`av-stuttgart.de`)"
-      - "traefik.http.services.av-stuttgart.loadbalancer.server.port=3001"
 
+  caddy:
+    image: caddy:2-alpine
+    container_name: av-stuttgart-caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deployment/Caddyfile:/etc/caddy/Caddyfile:ro
+      # Certificates live here; losing this volume means requesting new ones
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - av-stuttgart
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:
