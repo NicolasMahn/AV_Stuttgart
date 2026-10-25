@@ -6,3 +6,15 @@ av-stuttgart.de, www.av-stuttgart.de,
 activistsforthevictimsstuttgart.de, www.activistsforthevictimsstuttgart.de {
 	redir https://acvi-stuttgart.de{uri} permanent
 }
+
+# JudgeYou runs in its own stack (github.com/NicolasMahn/JudgeYou) and joins
+# this one's network, so this Caddy, the server's only one, can reach it.
+judge-you.de {
+	reverse_proxy judgeyou:8000
+}
+
+# One address, so the installed app and the deletion codes saved in the
+# browser all belong to the same site.
+www.judge-you.de, judge-you.com, www.judge-you.com {
+	redir https://judge-you.de{uri} permanent
+}
