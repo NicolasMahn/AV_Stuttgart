@@ -154,8 +154,7 @@
     width: 36px;
     height: 36px;
     overflow: hidden;
-    opacity: 0.4; /* Make it less visible */
-    transition: transform 0.2s ease, opacity 0.3s ease;
+    transition: transform 0.2s ease;
     -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
   }
   
@@ -163,13 +162,7 @@
   @media (hover: hover) {
     .language-toggle:hover {
       transform: scale(1.1);
-      opacity: 1;
     }
-  }
-
-  /* Reset opacity after click/tap on all devices */
-  .language-toggle:active {
-    opacity: 0.4;
   }
 
   .language-flag {
