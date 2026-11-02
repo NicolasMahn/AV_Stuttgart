@@ -125,7 +125,7 @@ test.describe('Content Loading Tests', () => {
     await expect(page.locator('text=Loading...')).not.toBeVisible({ timeout: 10000 });
     
     // Hash should be preserved
-    expect(page.url()).toContain('#Ethik');
+    await expect(page).toHaveURL(/\/#Ethik$/);
     
     // Active tab should be correct
     const activeTab = page.locator('.tab-item.active');
