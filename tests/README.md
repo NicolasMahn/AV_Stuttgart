@@ -102,7 +102,7 @@ npx playwright test tests/navigation.spec.ts --debug
 The test configuration is defined in `playwright.config.ts`:
 - **Base URL**: `http://localhost:3000`
 - **Browsers**: Chromium, Firefox, WebKit
-- **Web Server**: Automatically starts the React dev server before tests
+- **Web Server**: Builds the site, then starts Express against the production `build/` output
 - **Timeout**: 120 seconds for server startup
 - **Parallel execution**: Enabled for faster test runs
 - **Retries**: 2 retries on CI, 0 locally
@@ -152,7 +152,7 @@ When adding new tests:
 ## CI/CD Integration
 
 These tests are configured to run in CI environments:
-- GitHub Actions workflow is set up in `.github/workflows/playwright.yml`
+- GitHub Actions workflow is set up in `.github/workflows/ci-cd.yml`; pull requests validate without publishing or deploying
 - Tests run with 2 retries on CI
 - Sequential execution on CI to avoid resource conflicts
 - HTML report is generated for debugging failures

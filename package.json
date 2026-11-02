@@ -3,30 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "express": "^4.19.2",
-    "js-yaml": "^4.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.1",
-    "react-scripts": "5.0.1",
+    "express": "^4.22.3",
+    "js-yaml": "^4.3.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "vite",
+    "build": "vite build",
+    "test": "node --test tests/server.test.cjs",
     "server": "node server.js",
-    "build:serve": "npm run build && npm run server"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "build:serve": "npm run build && npm run server",
+    "test:e2e": "playwright test"
   },
   "browserslist": {
     "production": [
@@ -41,11 +31,15 @@
     ]
   },
   "devDependencies": {
-    "@applitools/eyes-playwright": "^1.41.1",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@playwright/test": "^1.56.1",
+    "@applitools/eyes-playwright": "^1.51.7",
+    "@playwright/test": "^1.64.1",
     "@types/node": "^24.10.1",
-    "sharp": "^0.34.5"
+    "@vitejs/plugin-react": "^6.2.1",
+    "browserslist-to-esbuild": "^2.1.1",
+    "sharp": "^0.35.5",
+    "vite": "^8.3.5"
   },
-  "proxy": "http://localhost:3001"
+  "engines": {
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
+  }
 }

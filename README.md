@@ -1,6 +1,35 @@
 # Website AV Stuttgart
 
-**Abhängigkeitssicherheit (2026-11-02):** `package-lock.json` und `my-app/package-lock.json` enthalten bekannte verwundbare Versionen, darunter [body-parser 1.20.2](https://github.com/advisories/GHSA-qwcr-r2fm-qrc7), [braces 3.0.2](https://github.com/advisories/GHSA-grv7-fg5c-xmjg) und [path-to-regexp 0.1.7](https://github.com/advisories/GHSA-9wv6-86v2-598j); Aktualisierungen stehen aus.
+**Abhängigkeitssicherheit (2026-11-02):** Express wurde auf 4.22.3 aktualisiert (u. a. body-parser 1.20.9, path-to-regexp 0.1.13, qs 6.16.2, send 0.19.2, serve-static 1.16.3). Beide Apps verwenden jetzt Vite statt des veralteten CRA-Werkzeugs; React 18 und die bestehende Oberfläche bleiben erhalten. React Router wurde auf 7.18.5 aktualisiert, da neuere Sicherheitskorrekturen nicht vollständig in Version 6 verfügbar sind.
+
+Geprüft mit den aktuellen npm-Advisory-Daten:
+
+- Root: `npm audit --omit=dev` meldet **0** Schwachstellen. Diese Abhängigkeiten werden im Produktionscontainer installiert; Vite und Testwerkzeuge sind dort nicht enthalten.
+- `my-app`: `npm audit --prefix my-app` meldet **0** Schwachstellen einschließlich der Build-/Testwerkzeuge. Die eigenständige Starter-App bleibt erhalten. Docker und das Deployment verwenden ausschließlich die Root-App mit `server.js`; kein Script verweist auf `my-app` als Teil des ausgelieferten Builds.
+- Root einschließlich Entwicklungswerkzeugen: **4 moderate betroffene Pakete**, keine hohen oder kritischen Befunde. Die Kette `@applitools/eyes-playwright → … → webdriver → @wdio/config → glob → minimatch` enthält noch [glob 13.0.6](https://github.com/advisories/GHSA-3g3m-2fjr-6pw4) und [minimatch 10.2.6](https://github.com/advisories/GHSA-g3hv-75wg-m249). Die korrigierten Hauptversionen passen nicht zu den Vorgaben der Elternpakete. Applitools wird von keinem vorhandenen Test oder Anwendungscode aufgerufen und bleibt ausschließlich eine Entwicklungsabhängigkeit. Keine erzwungenen Overrides.
+
+Die Prüfungen betreffen npm-Abhängigkeiten in diesem Stand, nicht bereits laufende Deployments oder alle Anwendungssicherheitsprobleme. Bereits vorhanden und weiterhin offen: Die Analytics-Lese-/Export-API prüft das Passwort nicht serverseitig; außerdem erlaubt die CORS-Middleware fremde Origins. Eine fehlerfreie Dependency-Prüfung behebt diese Zugriffskontrollen nicht.
+
+## Lokal entwickeln und prüfen
+
+Node.js 24 LTS verwenden (`.node-version`). Die Produktionsimages verwenden ebenfalls Node 24 statt des nicht mehr unterstützten Node 18.
+
+```sh
+npm ci
+npm start                 # Vite auf Port 3000
+npm run server           # separates Terminal: Express/API auf Port 3001
+npm run build            # Ausgabe weiterhin in build/
+npm test                 # isolierte Express-Integrationstests
+npx playwright install chromium firefox webkit
+npm run test:e2e          # baut die Seite und testet sie über Express
+npm ci --prefix my-app
+npm run build --prefix my-app
+npm test --prefix my-app
+```
+
+Die Express-Tests prüfen statische Dateien, Cache-/Range-Anfragen, SPA-Routen, API-404, ungültige/zu große JSON-Anfragen und Analytics-Schreib-/Lesevorgänge in einem temporären Verzeichnis. Die Browser-Tests prüfen Navigation, Sprachen, YAML-Inhalte, Menü und responsive Darstellung. Drei vorhandene Browser-Tests pro Browser sind weiterhin übersprungen.
+
+Pull Requests prüfen Builds, Tests und Audits und bauen das ARM64-Dockerimage ohne Veröffentlichung. Nur ein Push auf `main` darf anschließend ein Image veröffentlichen und das vorhandene Deployment ausführen. Der Root-Audit blockiert hohe/kritische Entwicklungsbefunde sowie sämtliche Produktionsbefunde; die dokumentierten moderaten Applitools-Befunde bleiben sichtbar.
 
 ## Wie füge ich Inhalt hinzu?
 

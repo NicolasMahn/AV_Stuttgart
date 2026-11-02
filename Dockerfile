@@ -1,6 +1,6 @@
 # Step 1: Build stage
-# node:18-alpine supports both ARM64 and x86_64
-FROM node:18-alpine as build-stage
+# Node 24 LTS supports both ARM64 and x86_64.
+FROM node:24-alpine AS build-stage
 
 WORKDIR /app
 
@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Step 2: Production stage
-FROM node:18-alpine
+FROM node:24-alpine
 
 WORKDIR /app
 
@@ -26,7 +26,7 @@ RUN apk add --no-cache wget
 
 # Copy package files and install production dependencies
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci --omit=dev && npm cache clean --force
 
 # Copy built React app from build stage
 COPY --from=build-stage /app/build ./build
