@@ -1,5 +1,7 @@
 # Website AV Stuttgart
 
+**Abhängigkeitssicherheit (2026-11-02):** `package-lock.json` und `my-app/package-lock.json` enthalten bekannte verwundbare Versionen, darunter [body-parser 1.20.2](https://github.com/advisories/GHSA-qwcr-r2fm-qrc7), [braces 3.0.2](https://github.com/advisories/GHSA-grv7-fg5c-xmjg) und [path-to-regexp 0.1.7](https://github.com/advisories/GHSA-9wv6-86v2-598j); Aktualisierungen stehen aus.
+
 ## Wie füge ich Inhalt hinzu?
 
 Wenn man Inhalt hinzufügen will, oder ändern will, muss man einfach das [content_de.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content_de.yaml) (oder die Datei mit dem englischen Inhalt [content_en.yaml](https://github.com/NicolasMahn/AV_Stuttgart/blob/main/public/content_en.yaml)) aufmachen und editieren.
