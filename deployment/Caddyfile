@@ -18,3 +18,11 @@ judge-you.de {
 www.judge-you.de, judge-you.com, www.judge-you.com {
 	redir https://judge-you.de{uri} permanent
 }
+
+# Momentum's website is static files in its own stack (/opt/momentum-site,
+# published by scripts/website.py in github.com/NicolasMahn/Momentum), which
+# joins this one's network like JudgeYou.
+momentum.nicolas-mahn.de {
+	encode zstd gzip
+	reverse_proxy momentum-site:80
+}
